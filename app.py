@@ -309,8 +309,10 @@ def page_regression() -> None:
             f'<div class="metric"><span>R² (test)</span><b>{vn(reg["r2_test"], 3)}</b></div>'
             '</div>'
             f'<div class="insight">Mỗi năm kinh nghiệm tăng thêm, lương dự đoán tăng khoảng '
-            f'<b>{vn(reg["b1"])}</b>. Mô hình giải thích {vn(reg["r2_test"] * 100, 1)}% biến thiên '
-            f'của lương trên tập test ({an.correlation_strength(reg["r"])}).</div>',
+            f'<b>{vn(reg["b1"])}</b>. Kinh nghiệm và lương: '
+            f'{an.correlation_strength(reg["r"])} (r = {vn(reg["r"], 3)}). '
+            f'Mô hình giải thích {vn(reg["r2_test"] * 100, 1)}% biến thiên '
+            'của lương trên tập test.</div>',
             unsafe_allow_html=True,
         )
        
@@ -342,8 +344,20 @@ def page_regression() -> None:
                                 "Experience_Group"))
     with row2[1], card("14"):
         card_title("Phần dư của mô hình",
-                   "Điểm rải ngẫu nhiên quanh trục 0 cho thấy mô hình tuyến tính phù hợp.")
+                   "Phần dư = lương thực tế − lương dự đoán (tập test). "
+                   "Mô hình phù hợp khi các điểm rải ngẫu nhiên quanh trục 0.")
         chart(ch.residual_plot(reg["test_pred"], reg["test_residual"]))
+        pred, res = reg["test_pred"], reg["test_residual"]
+        hi = pred >= np.quantile(pred, 0.8)
+        hi_mean = res[hi].mean()
+        if abs(hi_mean) > 0.25 * reg["rmse"]:
+            msg = (f"Phần dư chưa hoàn toàn ngẫu nhiên: ở vùng dự đoán cao, phần dư trung bình "
+                   f"là {vn(hi_mean)}, tức mô hình dự đoán "
+                   f"{'cao hơn' if hi_mean < 0 else 'thấp hơn'} thực tế. "
+                   "Mô hình đơn biến chưa giải thích hết biến thiên của lương.")
+        else:
+            msg = "Phần dư rải tương đối đều quanh 0, mô hình tuyến tính khá phù hợp."
+        st.markdown(f'<div class="insight">{msg}</div>', unsafe_allow_html=True)
 
     age_r, age_p = an.pearson(DF, "Age")
     age_b1, age_b0 = np.polyfit(DF["Age"], DF["Salary"], 1)
