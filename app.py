@@ -103,7 +103,7 @@ section[data-testid="stSidebar"] [data-testid="stFileUploaderDropzone"] button {
 .metric b { font-size: 1.2rem; color: #0F1E3D; font-variant-numeric: tabular-nums; }
 .insight { font-size: .86rem; color: #334155; line-height: 1.55; margin-top: .6rem; }
 .overview-insight { margin-bottom: 1rem; }
-</style>
+</style>ss
         """,
         unsafe_allow_html=True,
     )
@@ -195,9 +195,15 @@ def page_overview() -> None:
         chart(ch.mean_salary_bar(an.group_salary(DF, "Department"), "Department"))
 
     d = an.describe_salary(DF)
-    skew_text = ("lệch trái (đuôi dài về phía lương thấp)" if d["Skewness"] < -0.5
-                 else "lệch phải (đuôi dài về phía lương cao)" if d["Skewness"] > 0.5
-                 else "gần đối xứng")
+    if d["Skewness"] < -0.5:
+        skew_text = "lệch trái (đuôi dài về phía lương thấp)"
+    elif d["Skewness"] > 0.5:
+        skew_text = "lệch phải (đuôi dài về phía lương cao)"
+    elif d["Kurtosis"] < -0.5:
+        skew_text = ("có độ lệch nhỏ nhưng bẹt (kurtosis âm): lương trải rộng, "
+                     "không tập trung quanh trung bình, có thể gồm nhiều nhóm mức lương khác nhau")
+    else:
+        skew_text = "gần đối xứng"
     with card("4"):
         card_title("Thống kê mô tả biến Salary",
                    "Hướng trung tâm, độ phân tán và hình dạng phân phối.")
