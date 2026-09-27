@@ -133,18 +133,6 @@ def kpi_card(label: str, value: str, icon: str, color: str, bg: str) -> str:
             f'<div class="kpi-value">{value}</div></div></div>')
 
 
-def page_head(title: str, subtitle: str) -> None:
-    total = st.session_state["n_total"]
-    n = len(DF)
-    scope = (f"Toàn bộ dữ liệu: {vn(n)} nhân viên" if n == total
-             else f"Đang lọc: {vn(n)} / {vn(total)} nhân viên")
-    st.markdown(
-        f'<div class="page-head"><div><h1>{title}</h1><p>{subtitle}</p></div>'
-        f'<div class="scope">📅 {scope}</div></div>',
-        unsafe_allow_html=True,
-    )
-
-
 def card_title(title: str, note: str = "") -> None:
     html = f'<div class="card-title">{title}</div>'
     if note:
