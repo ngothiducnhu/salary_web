@@ -35,7 +35,7 @@ salary_app/
 | Mode, Std, IQR, CV, Skewness, Kurtosis, ngoại lệ | Thống kê mô tả | Bài 5 |
 | `groupby`, Pearson r + p-value, ANOVA, ma trận tương quan | Gom nhóm, tương quan, ANOVA | Bài 5 |
 | Salary = b0 + b1 × Experience_Years, residual plot, R² | Hồi quy tuyến tính | Bài 6 |
-| Train/test 70/30, R² train/test, MAE, RMSE | Đánh giá mô hình | Bài 7 |
+| Train/test 70/30, R² train/test | Đánh giá mô hình | Bài 7 |
 
 ## Dùng file dữ liệu khác
 

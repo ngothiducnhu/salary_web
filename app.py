@@ -159,17 +159,9 @@ def card(key: str):
 def chart(fig) -> None:
     st.plotly_chart(fig, width="stretch", config=PLOT_CONFIG)
 
-
-# ==========================================================================
-# Dữ liệu (Bài 1 - nhập dữ liệu, Bài 2 - tiền xử lý)
-# ==========================================================================
 @st.cache_data(show_spinner="Đang đọc và xử lý dữ liệu...")
-def load_data(file_bytes: bytes | None) -> tuple[pd.DataFrame, dict]:
-    if file_bytes is None:
-        raw = pd.read_csv(DATA_PATH)
-    else:
-        from io import BytesIO
-        raw = pd.read_csv(BytesIO(file_bytes))
+def load_data() -> tuple[pd.DataFrame, dict]:
+    raw = pd.read_csv(DATA_PATH)
     return an.clean_data(raw)
 
 
@@ -209,7 +201,6 @@ def page_overview() -> None:
         card_title("Lương trung bình theo phòng ban")
         chart(ch.mean_salary_bar(an.group_salary(DF, "Department"), "Department"))
 
-    # ---- Thống kê mô tả (Bài 5) ----
     d = an.describe_salary(DF)
     skew_text = ("lệch trái (đuôi dài về phía lương thấp)" if d["Skewness"] < -0.5
                  else "lệch phải (đuôi dài về phía lương cao)" if d["Skewness"] > 0.5
@@ -235,7 +226,6 @@ def page_overview() -> None:
             unsafe_allow_html=True,
         )
 
-    # ---- Kiểm tra và tiền xử lý dữ liệu (Bài 1, 2) ----
     with st.expander("Dữ liệu và các bước tiền xử lý"):
         rep = st.session_state["report"]
         st.markdown(
@@ -288,7 +278,6 @@ def page_salary() -> None:
                    "Đường giữa hộp là trung vị, thân hộp là IQR, điểm rời là ngoại lệ.")
         chart(ch.salary_box(DF, list(dept["Department"])))
 
-    # ---- ANOVA (Bài 5) ----
     with row3[1], card("10"):
         card_title("Kiểm định ANOVA",
                    "Lương trung bình giữa các nhóm có khác nhau thật sự không? (α = 0,05)")
@@ -329,7 +318,7 @@ def page_regression() -> None:
     with row1[0], card("11"):
         card_title("Kinh nghiệm so với mức lương")
         chart(ch.scatter_with_line(DF, "Experience_Years", reg["b0"], reg["b1"],
-                                   "Số năm kinh nghiệm", height=380))
+                                   "Số năm kinh nghiệm", height=360))
 
     with row1[1], card("12"):
         card_title("Thông tin mô hình hồi quy")
@@ -348,7 +337,7 @@ def page_regression() -> None:
         )
        
         INPUT_BG = "#EEF3FF"
-        st.markdown('<div style="font-weight:600; font-size:1rem; color:#0F1E3D; '
+        st.markdown('<div style="font-weight:600; font-size:1rem; color:#0F1E3D'
                     'margin:.8rem 0 .4rem;">Dự đoán lương theo số năm kinh nghiệm</div>',
                     unsafe_allow_html=True)
 
@@ -364,7 +353,7 @@ def page_regression() -> None:
                     f'<div style="height:2.5rem; box-sizing:border-box; margin:0; padding:0 1rem; '
                     f'display:flex; align-items:center; border-radius:8px; '
                     f'background:{INPUT_BG}; color:#1E293B; font-size:1rem; white-space:nowrap;">'
-                    f'Lương dự đoán:<b>{vn(an.predict_salary(reg, years))}</b></div>',
+                    f'Lương dự đoán:&nbsp;<b>{vn(an.predict_salary(reg, years))}</b></div>',
                     unsafe_allow_html=True,
                 )
 
@@ -402,7 +391,7 @@ def page_regression() -> None:
 
 
 # ==========================================================================
-# SIDEBAR + ĐIỀU HƯỚNG
+# SIDEBAR
 # ==========================================================================
 inject_css()
 
@@ -422,11 +411,8 @@ with st.sidebar:
     for p in pages:
         st.page_link(p, label=p.title, icon=p.icon)
 
-    st.markdown('<div class="side-label">Nguồn dữ liệu</div>', unsafe_allow_html=True)
-    uploaded = st.file_uploader("Tải file CSV khác", type="csv", label_visibility="collapsed")
-
 try:
-    FULL, report = load_data(uploaded.getvalue() if uploaded else None)
+    FULL, report = load_data()
 except (ValueError, pd.errors.ParserError) as err:
     st.error(f"Không đọc được dữ liệu. {err}")
     st.stop()
