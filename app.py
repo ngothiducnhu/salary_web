@@ -105,6 +105,7 @@ section[data-testid="stSidebar"] [data-testid="stFileUploaderDropzone"] button {
 .metric span { display: block; font-size: .78rem; color: #64748B; }
 .metric b { font-size: 1.2rem; color: #0F1E3D; font-variant-numeric: tabular-nums; }
 .insight { font-size: .86rem; color: #334155; line-height: 1.55; margin-top: .6rem; }
+.overview-insight { margin-bottom: 1rem; }
 </style>
         """,
         unsafe_allow_html=True,
@@ -219,7 +220,7 @@ def page_overview() -> None:
             col.markdown(f'<div class="metric"><span>{label}</span><b>{value}</b></div>',
                          unsafe_allow_html=True)
         st.markdown(
-            f'<div class="insight">Trung bình ({vn(d["Mean"])}) '
+            f'<div class="insight overview-insight">Trung bình ({vn(d["Mean"])}) '
             f'{"thấp hơn" if d["Mean"] < d["Median"] else "cao hơn"} trung vị ({vn(d["Median"])}), '
             f'phân phối {skew_text}. Có {vn(d["Outliers"])} giá trị ngoại lệ theo quy tắc '
             f'Q1 − 1,5·IQR và Q3 + 1,5·IQR.</div>',
