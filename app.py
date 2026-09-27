@@ -226,27 +226,6 @@ def page_overview() -> None:
             unsafe_allow_html=True,
         )
 
-    with st.expander("Dữ liệu và các bước tiền xử lý"):
-        rep = st.session_state["report"]
-        st.markdown(
-            f"- Số dòng đọc được: **{vn(rep['rows_raw'])}**, sau xử lý: **{vn(rep['rows_clean'])}**\n"
-            f"- Dòng bị loại do thiếu Salary: **{rep['dropped_missing_salary']}**; "
-            f"dòng trùng lặp bị loại: **{rep['dropped_duplicates']}**\n"
-            f"- Tổng số giá trị khuyết trước xử lý: **{int(rep['missing_before'].sum())}**\n"
-            "- Đã tạo thêm 2 cột phân loại bằng `pd.cut()`: `Experience_Group`, `Age_Group`"
-        )
-        a, b = st.columns([1, 1.6])
-        a.markdown("**Kiểu dữ liệu (tương tự `df.info()`)**")
-        a.dataframe(an.dtype_table(DF), hide_index=True, width="stretch")
-        b.markdown("**5 dòng đầu (`df.head()`)**")
-        b.dataframe(DF.head(), hide_index=True, width="stretch")
-        st.download_button(
-            "Tải dữ liệu đang xem (.csv)",
-            DF.to_csv(index=False).encode("utf-8-sig"),
-            file_name="luong_nhan_vien_da_xu_ly.csv",
-            mime="text/csv",
-        )
-
 
 # ==========================================================================
 # DASHBOARD 2 - PHÂN TÍCH LƯƠNG
