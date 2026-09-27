@@ -80,9 +80,6 @@ section[data-testid="stSidebar"] [data-testid="stFileUploaderDropzone"] button {
              gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; }
 .page-head h1 { font-size: 1.55rem; font-weight: 700; color: #0F1E3D; margin: 0; padding: 0; }
 .page-head p { color: #64748B; margin: .2rem 0 0; font-size: .92rem; }
-.scope { background: #FFFFFF; border: 1px solid #DCE3EE; border-radius: 8px;
-         padding: .45rem .8rem; font-size: .85rem; color: #1E293B; white-space: nowrap; }
-
 /* Thẻ KPI */
 .kpi { background: #FFFFFF; border: 1px solid #E3E8F0; border-radius: 12px;
        padding: 1rem 1.1rem; display: flex; gap: .85rem; align-items: center; height: 100%; }
@@ -133,15 +130,9 @@ def kpi_card(label: str, value: str, icon: str, color: str, bg: str) -> str:
             f'<div class="kpi-value">{value}</div></div></div>')
 
 
-def page_head(title: str, subtitle: str, show_scope: bool = True) -> None:
-    total = st.session_state["n_total"]
-    n = len(DF)
-    scope = (f"Toàn bộ dữ liệu: {vn(n)} nhân viên" if n == total
-             else f"Đang lọc: {vn(n)} / {vn(total)} nhân viên")
-    scope_html = f'<div class="scope">📅 {scope}</div>' if show_scope else ""
+def page_head(title: str, subtitle: str) -> None:
     st.markdown(
-        f'<div class="page-head"><div><h1>{title}</h1><p>{subtitle}</p></div>'
-        f'{scope_html}</div>',
+        f'<div class="page-head"><div><h1>{title}</h1><p>{subtitle}</p></div></div>',
         unsafe_allow_html=True,
     )
 
@@ -178,8 +169,7 @@ def cached_regression(df: pd.DataFrame, x: str) -> dict:
 # DASHBOARD 1 - TỔNG QUAN
 # ==========================================================================
 def page_overview() -> None:
-    page_head("Tổng quan", "Quy mô bộ dữ liệu và phân bố mức lương của nhân viên.",
-              show_scope=False)
+    page_head("Tổng quan", "Quy mô bộ dữ liệu và phân bố mức lương của nhân viên.")
     k = an.kpis(DF)
 
     cards = [
@@ -403,7 +393,6 @@ except FileNotFoundError:
     st.stop()
 
 st.session_state["report"] = report
-st.session_state["n_total"] = len(FULL)
 
 with st.sidebar:
     st.markdown('<div class="side-label">Bộ lọc</div>', unsafe_allow_html=True)
