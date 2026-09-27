@@ -158,7 +158,7 @@ def page_overview() -> None:
 
     cards = [
         ("Tổng nhân viên", vn(k["count"]), "people", "#2563EB", "#E0EAFF"),
-        ("Lương trung bình", vn(k["mean"], 1), "coins", "#0FA37F", "#DDF5EC"),
+        ("Lương trung bình", vn(k["mean"]), "coins", "#0FA37F", "#DDF5EC"),
         ("Lương trung vị", vn(k["median"]), "median", "#7C3AED", "#EDE7FE"),
         ("Lương thấp nhất", vn(k["min"]), "down", "#EA580C", "#FFEBDD"),
         ("Lương cao nhất", vn(k["max"]), "up", "#E11D48", "#FFE4EA"),

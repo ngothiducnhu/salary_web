@@ -80,7 +80,7 @@ def salary_histogram(df: pd.DataFrame, mean_value: float) -> go.Figure:
     fig.add_annotation(x=mean_value, y=1, yref="paper", xanchor="left", yanchor="top",
                        text=f" Trung bình: {mean_value:,.0f}".replace(",", "."),
                        showarrow=False, font=dict(size=11, color=INK))
-    fig.update_xaxes(title="Mức lương", tickformat=",.0f")
+    fig.update_xaxes(title="Mức lương", tickformat="~s")
     fig.update_yaxes(title="Số nhân viên")
     style(fig)
     fig.update_layout(bargap=0.06)
