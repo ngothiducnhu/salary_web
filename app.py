@@ -133,6 +133,19 @@ def kpi_card(label: str, value: str, icon: str, color: str, bg: str) -> str:
             f'<div class="kpi-value">{value}</div></div></div>')
 
 
+def page_head(title: str, subtitle: str, show_scope: bool = True) -> None:
+    total = st.session_state["n_total"]
+    n = len(DF)
+    scope = (f"Toàn bộ dữ liệu: {vn(n)} nhân viên" if n == total
+             else f"Đang lọc: {vn(n)} / {vn(total)} nhân viên")
+    scope_html = f'<div class="scope">📅 {scope}</div>' if show_scope else ""
+    st.markdown(
+        f'<div class="page-head"><div><h1>{title}</h1><p>{subtitle}</p></div>'
+        f'{scope_html}</div>',
+        unsafe_allow_html=True,
+    )
+
+
 def card_title(title: str, note: str = "") -> None:
     html = f'<div class="card-title">{title}</div>'
     if note:
@@ -165,7 +178,8 @@ def cached_regression(df: pd.DataFrame, x: str) -> dict:
 # DASHBOARD 1 - TỔNG QUAN
 # ==========================================================================
 def page_overview() -> None:
-    page_head("Tổng quan", "Quy mô bộ dữ liệu và phân bố mức lương của nhân viên.")
+    page_head("Tổng quan", "Quy mô bộ dữ liệu và phân bố mức lương của nhân viên.",
+              show_scope=False)
     k = an.kpis(DF)
 
     cards = [
