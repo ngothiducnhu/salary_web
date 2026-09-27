@@ -1,20 +1,7 @@
-"""
-app.py - Web phân tích và trực quan hóa dữ liệu lương nhân viên.
-
-Chạy:  streamlit run app.py
-
-Cấu trúc 3 dashboard theo file định hướng chart:
-    1. Tổng quan               - KPI + biểu đồ 1, 2, 3
-    2. Phân tích lương         - biểu đồ 4 đến 8 + ANOVA
-    3. Kinh nghiệm & hồi quy   - biểu đồ 9 đến 13 + chỉ số mô hình
-"""
-
 from pathlib import Path
-
 import numpy as np
 import pandas as pd
 import streamlit as st
-
 import analysis as an
 import charts as ch
 
@@ -29,9 +16,6 @@ DATA_PATH = Path(__file__).parent / "data" / "Employers_data.csv"
 PLOT_CONFIG = {"displayModeBar": False, "responsive": True}
 
 
-# ==========================================================================
-# Định dạng số kiểu Việt Nam: 115.381,5
-# ==========================================================================
 def vn(value: float, decimals: int = 0) -> str:
     text = f"{value:,.{decimals}f}"
     return text.replace(",", "X").replace(".", ",").replace("X", ".")
@@ -42,7 +26,7 @@ def vn_p(p: float) -> str:
 
 
 # ==========================================================================
-# Giao diện (CSS)
+# CSS
 # ==========================================================================
 def inject_css() -> None:
     st.markdown(
@@ -103,7 +87,7 @@ section[data-testid="stSidebar"] [data-testid="stFileUploaderDropzone"] button {
 .metric b { font-size: 1.2rem; color: #0F1E3D; font-variant-numeric: tabular-nums; }
 .insight { font-size: .86rem; color: #334155; line-height: 1.55; margin-top: .6rem; }
 .overview-insight { margin-bottom: 1rem; }
-</style>ss
+</style>
         """,
         unsafe_allow_html=True,
     )
