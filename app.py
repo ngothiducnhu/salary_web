@@ -123,16 +123,11 @@ section[data-testid="stSidebar"] [data-testid="stMultiSelect"] [data-baseweb="ta
 
 /* Tiêu đề trang */
 .page-head { display: flex; align-items: center; min-height: 68px; margin-bottom: 1rem; }
-.page-head-main { display: flex; align-items: center; gap: .85rem; min-width: 0; }
-.page-head-icon { width: 48px; height: 48px; border-radius: 50%; flex: none;
-                  display: grid; place-items: center; background: #E6F0FF; }
 .page-head h1 { font-size: 1.55rem; line-height: 1.3; font-weight: 700;
                 color: #0F1E3D; margin: 0; padding: 0; }
 .page-head p { color: #64748B; margin: .2rem 0 0; font-size: .88rem; line-height: 1.5; }
 @media (max-width: 700px) {
     .page-head { align-items: flex-start; }
-    .page-head-main { align-items: flex-start; }
-    .page-head-icon { width: 42px; height: 42px; }
     .page-head h1 { font-size: 1.35rem; }
 }
 /* Thẻ KPI */
@@ -207,11 +202,10 @@ def kpi_card(label: str, value: str, icon: str, color: str, bg: str) -> str:
             f'<div class="kpi-value">{value}</div></div></div>')
 
 
-def page_head(title: str, subtitle: str, icon: str = "people") -> None:
+def page_head(title: str, subtitle: str) -> None:
     st.markdown(
-        f'<div class="page-head"><div class="page-head-main">'
-        f'<div class="page-head-icon" aria-hidden="true">{svg(icon, "#2563EB", 24)}</div>'
-        f'<div><h1>{escape(title)}</h1><p>{escape(subtitle)}</p></div></div></div>',
+        f'<div class="page-head"><div><h1>{escape(title)}</h1>'
+        f'<p>{escape(subtitle)}</p></div></div>',
         unsafe_allow_html=True,
     )
 
@@ -326,7 +320,7 @@ def page_overview() -> None:
 # ==========================================================================
 def page_salary() -> None:
     page_head("Phân tích lương",
-              "So sánh mức lương theo phòng ban, chức danh, học vấn và địa điểm.", "coins")
+              "So sánh mức lương theo phòng ban, chức danh, học vấn và địa điểm.")
 
     dept = an.group_salary(DF, "Department")
     row1 = st.columns(2)
@@ -379,7 +373,7 @@ def page_salary() -> None:
 # ==========================================================================
 def page_regression() -> None:
     page_head("Kinh nghiệm & mức lương",
-              "Quan hệ giữa kinh nghiệm, độ tuổi và lương; mô hình hồi quy tuyến tính.", "up")
+              "Quan hệ giữa kinh nghiệm, độ tuổi và lương; mô hình hồi quy tuyến tính.")
 
     if len(DF) < 30:
         st.warning("Cần ít nhất 30 nhân viên để xây dựng mô hình hồi quy. Hãy nới bộ lọc bên trái.")
@@ -484,7 +478,7 @@ inject_css()
 
 pages = [
     st.Page(page_overview, title="Tổng quan", icon=":material/home:", url_path="tong-quan", default=True),
-    st.Page(page_salary, title="Phân tích lương", icon=":material/bar_chart:", url_path="phan-tich-luong"),
+    st.Page(page_salary, title="Phân tích lương", icon=":material/finance:", url_path="phan-tich-luong"),
     st.Page(page_regression, title="Kinh nghiệm & hồi quy", icon=":material/trending_up:", url_path="hoi-quy"),
 ]
 current = st.navigation(pages, position="hidden")
