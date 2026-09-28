@@ -45,7 +45,7 @@ html, body, .stApp, .stApp p, .stApp label, .stApp li, .stApp h1, .stApp h2,
 .block-container { padding-top: 1.6rem; padding-bottom: 3rem; max-width: 1500px; }
 header[data-testid="stHeader"] { background: transparent; }
 
-/* Sidebar theo mẫu: logo cột, menu xanh, bộ lọc xanh xám và sóng ở chân. */
+/* Sidebar theo mẫu: logo cột, menu xanh và bộ lọc xanh xám. */
 section[data-testid="stSidebar"] {
     background: linear-gradient(160deg, #112246 0%, #0B1B3C 72%, #0B1B3C 100%);
     border-right: 1px solid #18376C;
@@ -55,31 +55,16 @@ section[data-testid="stSidebar"] {
 section[data-testid="stSidebar"] [data-testid="stSidebarContent"] {
     position: relative;
     min-height: 100vh;
-    padding: 1.25rem .9rem 7.5rem;
+    padding: 1.25rem .9rem 1.5rem;
     overflow-x: clip;
 }
-section[data-testid="stSidebar"] [data-testid="stSidebarContent"]::before,
-section[data-testid="stSidebar"] [data-testid="stSidebarContent"]::after {
-    content: "";
-    position: absolute;
-    left: -12%;
-    width: 125%;
-    height: 140px;
-    bottom: 0;
-    pointer-events: none;
-}
-section[data-testid="stSidebar"] [data-testid="stSidebarContent"]::before {
-    background: #12346D;
-    clip-path: polygon(0 8%, 25% 28%, 48% 56%, 73% 83%, 100% 42%, 100% 100%, 0 100%);
-}
-section[data-testid="stSidebar"] [data-testid="stSidebarContent"]::after {
-    background: linear-gradient(145deg, #164DAD, #102A62);
-    clip-path: polygon(0 0, 27% 42%, 52% 83%, 75% 100%, 0 100%);
-    opacity: .8;
+section[data-testid="stSidebar"] [data-testid="stSidebarHeader"] {
+    position: relative;
+    z-index: 2;
 }
 section[data-testid="stSidebar"] [data-testid="stSidebarUserContent"] {
     position: relative;
-    z-index: 1;
+    margin-top: -3.5rem;
 }
 section[data-testid="stSidebar"] [data-testid="stSidebarCollapseButton"] button,
 section[data-testid="stSidebar"] [data-testid="stSidebarContent"] button[kind="header"] {
@@ -132,36 +117,23 @@ section[data-testid="stSidebar"] [data-testid="stMultiSelect"] input::placeholde
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] [data-baseweb="tag"] {
     background: #1A5CC4;
 }
-.side-footer { position: fixed; bottom: 1.25rem; left: 1.35rem; z-index: 2;
-               display: flex; align-items: center; gap: .45rem; color: #AFC4E9;
-               font-size: .68rem; }
-.side-footer svg { opacity: .85; }
 @media (max-width: 700px) {
     section[data-testid="stSidebar"] { width: min(258px, 88vw); min-width: 0; }
 }
-@media (max-height: 560px) {
-    .side-footer { position: static; margin-top: 2rem; }
-}
 
 /* Tiêu đề trang */
-.page-head { display: flex; align-items: center; justify-content: space-between;
-             gap: 1rem; min-height: 68px; margin-bottom: 1rem; flex-wrap: wrap; }
+.page-head { display: flex; align-items: center; min-height: 68px; margin-bottom: 1rem; }
 .page-head-main { display: flex; align-items: center; gap: .85rem; min-width: 0; }
 .page-head-icon { width: 48px; height: 48px; border-radius: 50%; flex: none;
                   display: grid; place-items: center; background: #E6F0FF; }
 .page-head h1 { font-size: 1.55rem; line-height: 1.3; font-weight: 700;
                 color: #0F1E3D; margin: 0; padding: 0; }
 .page-head p { color: #64748B; margin: .2rem 0 0; font-size: .88rem; line-height: 1.5; }
-.page-head-meta { display: inline-flex; align-items: center; gap: .4rem;
-                  border: 1px solid #E0E8F4; background: #FFFFFF; border-radius: 8px;
-                  padding: .45rem .65rem; color: #50627E; font-size: .75rem;
-                  white-space: nowrap; box-shadow: 0 2px 8px #12234508; }
 @media (max-width: 700px) {
     .page-head { align-items: flex-start; }
     .page-head-main { align-items: flex-start; }
     .page-head-icon { width: 42px; height: 42px; }
     .page-head h1 { font-size: 1.35rem; }
-    .page-head-meta { margin-left: 56px; }
 }
 /* Thẻ KPI */
 .kpi { background: #FFFFFF; border: 1px solid #E3E8F0; border-radius: 12px;
@@ -239,9 +211,7 @@ def page_head(title: str, subtitle: str, icon: str = "people") -> None:
     st.markdown(
         f'<div class="page-head"><div class="page-head-main">'
         f'<div class="page-head-icon" aria-hidden="true">{svg(icon, "#2563EB", 24)}</div>'
-        f'<div><h1>{escape(title)}</h1><p>{escape(subtitle)}</p></div></div>'
-        f'<div class="page-head-meta">{svg("people", "#64748B", 14)}'
-        f'<span>Đang xem: {vn(len(DF))} nhân viên</span></div></div>',
+        f'<div><h1>{escape(title)}</h1><p>{escape(subtitle)}</p></div></div></div>',
         unsafe_allow_html=True,
     )
 
@@ -549,11 +519,6 @@ with st.sidebar:
     f_dept = st.multiselect(":material/groups: Phòng ban", sorted(FULL["Department"].unique()), placeholder="Tất cả")
     f_loc = st.multiselect(":material/location_on: Địa điểm", sorted(FULL["Location"].unique()), placeholder="Tất cả")
     f_gender = st.multiselect(":material/person: Giới tính", sorted(FULL["Gender"].unique()), placeholder="Tất cả")
-    st.markdown(
-        f'<div class="side-footer">{svg("median", "#C6D8F7", 16)}'
-        ,
-        unsafe_allow_html=True,
-    )
 
 DF = FULL
 if f_dept:
