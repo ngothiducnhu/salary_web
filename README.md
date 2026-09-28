@@ -18,7 +18,8 @@ Trình duyệt sẽ mở tại http://localhost:8501
 salary_app/
 ├── app.py              # Giao diện: sidebar, 3 dashboard, bộ lọc
 ├── analysis.py         # Tiền xử lý, thống kê, ANOVA, hồi quy
-├── charts.py           # 13 biểu đồ Plotly
+├── charts.py           # Các hàm vẽ 14 biểu đồ Plotly
+├── insights.py         # Nhận xét riêng cho từng biểu đồ theo bộ lọc
 ├── data/Employers_data.csv
 ├── .streamlit/config.toml
 └── requirements.txt

@@ -1,9 +1,12 @@
+from html import escape
 from pathlib import Path
+import re
 import numpy as np
 import pandas as pd
 import streamlit as st
 import analysis as an
 import charts as ch
+import insights
 
 st.set_page_config(
     page_title="Phân tích lương nhân viên",
@@ -74,9 +77,29 @@ section[data-testid="stSidebar"] [data-testid="stFileUploaderDropzone"] button {
              font-variant-numeric: tabular-nums; }
 
 /* Khung chart: st.container(border=True, key="card_...") */
-[class*="st-key-card_"] { background: #FFFFFF; border-radius: 12px; border-color: #E3E8F0 !important; }
-.card-title { font-weight: 600; font-size: .95rem; color: #0F1E3D; margin-bottom: .1rem; }
+[class*="st-key-card_"] { background: #FFFFFF; border-radius: 12px;
+                          border-color: #E3E8F0 !important; overflow: visible; }
+.card-title { font-weight: 600; font-size: .95rem; color: #0F1E3D;
+              margin-bottom: .1rem; white-space: normal; overflow-wrap: anywhere; }
 .card-note { font-size: .8rem; color: #64748B; margin-bottom: .2rem; }
+.chart-heading { display: flex; align-items: flex-start; gap: .5rem;
+                 width: 100%; position: relative; z-index: 10; }
+.chart-heading .card-title { flex: 1; min-width: 0; line-height: 1.45; }
+.chart-insight-icon { display: inline-grid; place-items: center; position: relative;
+                      flex: none; width: 28px; height: 28px; border-radius: 50%;
+                      background: #EEF3FF; font-size: 17px; cursor: help; }
+.chart-insight-icon:hover, .chart-insight-icon:focus-visible { background: #DBEAFE; }
+.chart-insight-icon:focus-visible { outline: 2px solid #2563EB; outline-offset: 2px; }
+.chart-insight-tooltip { position: absolute; top: calc(100% + 8px); right: 0;
+                         width: min(360px, calc(100vw - 32px)); box-sizing: border-box;
+                         padding: .85rem 1rem; border-radius: 10px; background: #0F1E3D;
+                         box-shadow: 0 12px 30px #0F1E3D30; color: #FFFFFF;
+                         font-size: .88rem; font-weight: 400; line-height: 1.55;
+                         text-align: left; visibility: hidden; opacity: 0;
+                         pointer-events: none; z-index: 100; }
+.chart-insight-icon:hover .chart-insight-tooltip,
+.chart-insight-icon:focus .chart-insight-tooltip { visibility: visible; opacity: 1; }
+.chart-insight-tooltip strong { color: #FFFFFF; font-weight: 700; }
 
 /* Chỉ số mô hình */
 .eq { background: #EEF3FF; border-radius: 8px; padding: .6rem .8rem; color: #1E3A8A;
@@ -85,6 +108,7 @@ section[data-testid="stSidebar"] [data-testid="stFileUploaderDropzone"] button {
 .metric { border: 1px solid #E3E8F0; border-radius: 8px; padding: .55rem .75rem; }
 .metric span { display: block; font-size: .78rem; color: #64748B; }
 .metric b { font-size: 1.2rem; color: #0F1E3D; font-variant-numeric: tabular-nums; }
+.metric-range b { font-size: clamp(.8rem, 1.15vw, 1.05rem); white-space: nowrap; }
 .insight { font-size: .86rem; color: #334155; line-height: 1.55; margin-top: .6rem; }
 .overview-insight { margin-bottom: 1rem; }
 </style>
@@ -128,9 +152,24 @@ def card_title(title: str, note: str = "") -> None:
     st.markdown(html, unsafe_allow_html=True)
 
 
+def chart_title(title: str, chart_id: int, note: str = "", reg: dict | None = None) -> None:
+    """Hiện nhận xét khi rê chuột hoặc đặt tiêu điểm vào biểu tượng bóng đèn."""
+    comment = escape(insights.for_chart(chart_id, DF, reg))
+    comment = re.sub(r"\*\*(.*?)\*\*", r"<strong>\1</strong>", comment)
+    note_html = f'<div class="card-note">{escape(note)}</div>' if note else ""
+    st.markdown(
+        f'<div class="chart-heading"><div class="card-title">{escape(title)}</div>'
+        f'<span class="chart-insight-icon" tabindex="0" '
+        f'aria-label="Nhận xét cho {escape(title)}" aria-describedby="chart-tip-{chart_id}">'
+        f'💡<span class="chart-insight-tooltip" id="chart-tip-{chart_id}" role="tooltip">'
+        f'{comment}</span></span></div>{note_html}',
+        unsafe_allow_html=True,
+    )
+
+
 def card(key: str):
-    """Khung trắng bo góc chứa 1 biểu đồ."""
-    return st.container(border=True, key=f"card_{key}")
+    """Khung trắng giãn theo chiều cao của các box cùng hàng."""
+    return st.container(border=True, key=f"card_{key}", height="stretch")
 
 
 def chart(fig) -> None:
@@ -169,13 +208,13 @@ def page_overview() -> None:
 
     c1, c2, c3 = st.columns([1.35, 1, 1])
     with c1, card("1"):
-        card_title("Phân bố mức lương")
+        chart_title("Phân bố mức lương", 1)
         chart(ch.salary_histogram(DF, k["mean"]))
     with c2, card("2"):
-        card_title("Nhân viên theo phòng ban")
+        chart_title("Nhân viên theo phòng ban", 2)
         chart(ch.headcount_barh(DF))
     with c3, card("3"):
-        card_title("Lương trung bình theo phòng ban")
+        chart_title("Lương trung bình theo phòng ban", 3)
         chart(ch.mean_salary_bar(an.group_salary(DF, "Department"), "Department"))
 
     d = an.describe_salary(DF)
@@ -191,7 +230,7 @@ def page_overview() -> None:
     with card("4"):
         card_title("Thống kê mô tả biến Salary",
                    "Hướng trung tâm, độ phân tán và hình dạng phân phối.")
-        cols = st.columns(7)
+        cols = st.columns([1, 1, 1.5, 1, 1, 1, 1])
         items = [
             ("Mode", vn(d["Mode"])), ("Độ lệch chuẩn", vn(d["Std"])),
             ("Q1 / Q3", f'{vn(d["Q1"])} / {vn(d["Q3"])}'), ("IQR", vn(d["IQR"])),
@@ -199,7 +238,8 @@ def page_overview() -> None:
             ("Kurtosis", vn(d["Kurtosis"], 3)),
         ]
         for col, (label, value) in zip(cols, items):
-            col.markdown(f'<div class="metric"><span>{label}</span><b>{value}</b></div>',
+            metric_class = "metric metric-range" if label == "Q1 / Q3" else "metric"
+            col.markdown(f'<div class="{metric_class}"><span>{label}</span><b>{value}</b></div>',
                          unsafe_allow_html=True)
         st.markdown(
             f'<div class="insight overview-insight">Trung bình ({vn(d["Mean"])}) '
@@ -220,24 +260,24 @@ def page_salary() -> None:
     dept = an.group_salary(DF, "Department")
     row1 = st.columns(2)
     with row1[0], card("5"):
-        card_title("Lương theo phòng ban")
+        chart_title("Lương theo phòng ban", 4)
         chart(ch.mean_median_bar(dept, "Department"))
     with row1[1], card("6"):
-        card_title("Lương theo chức danh")
+        chart_title("Lương theo chức danh", 5)
         chart(ch.mean_median_bar(an.group_salary(DF, "Job_Title"), "Job_Title"))
 
     row2 = st.columns(2)
     with row2[0], card("7"):
-        card_title("Lương theo học vấn")
+        chart_title("Lương theo học vấn", 6)
         chart(ch.mean_median_bar(an.group_salary(DF, "Education_Level"), "Education_Level"))
     with row2[1], card("8"):
-        card_title("Lương theo địa điểm")
+        chart_title("Lương theo địa điểm", 7)
         chart(ch.mean_median_bar(an.group_salary(DF, "Location"), "Location"))
 
     row3 = st.columns([1.5, 1])
     with row3[0], card("9"):
-        card_title("Phân bố lương theo phòng ban",
-                   "Đường giữa hộp là trung vị, thân hộp là IQR, điểm rời là ngoại lệ.")
+        chart_title("Phân bố lương theo phòng ban", 8,
+                    "Đường giữa hộp là trung vị, thân hộp là IQR, điểm rời là ngoại lệ.")
         chart(ch.salary_box(DF, list(dept["Department"])))
 
     with row3[1], card("10"):
@@ -278,7 +318,7 @@ def page_regression() -> None:
 
     row1 = st.columns([1.6, 1])
     with row1[0], card("11"):
-        card_title("Kinh nghiệm so với mức lương")
+        chart_title("Kinh nghiệm so với mức lương", 9, reg=reg)
         chart(ch.scatter_with_line(DF, "Experience_Years", reg["b0"], reg["b1"],
                                    "Số năm kinh nghiệm", height=360))
 
@@ -323,13 +363,13 @@ def page_regression() -> None:
 
     row2 = st.columns(2)
     with row2[0], card("13"):
-        card_title("Lương theo nhóm kinh nghiệm")
+        chart_title("Lương theo nhóm kinh nghiệm", 10)
         chart(ch.group_mean_bar(an.group_salary(DF, "Experience_Group", sort_by_mean=False),
-                                "Experience_Group"))
+                                "Experience_Group", height=440))
     with row2[1], card("14"):
-        card_title("Phần dư của mô hình",
-                   "Phần dư = lương thực tế − lương dự đoán (tập test). "
-                   "Mô hình phù hợp khi các điểm rải ngẫu nhiên quanh trục 0.")
+        chart_title("Phần dư của mô hình", 11,
+                    "Phần dư = lương thực tế − lương dự đoán (tập test). "
+                    "Mô hình phù hợp khi các điểm rải ngẫu nhiên quanh trục 0.", reg=reg)
         chart(ch.residual_plot(reg["test_pred"], reg["test_residual"]))
         pred, res = reg["test_pred"], reg["test_residual"]
         hi = pred >= np.quantile(pred, 0.8)
@@ -347,19 +387,19 @@ def page_regression() -> None:
     age_b1, age_b0 = np.polyfit(DF["Age"], DF["Salary"], 1)
     row3 = st.columns(2)
     with row3[0], card("15"):
-        card_title("Độ tuổi và mức lương",
-                   f"Pearson r = {vn(age_r, 3)}, p-value {vn_p(age_p)}: "
-                   f"{an.correlation_strength(age_r)}.")
+        chart_title("Độ tuổi và mức lương", 12,
+                    f"Pearson r = {vn(age_r, 3)}, p-value {vn_p(age_p)}: "
+                    f"{an.correlation_strength(age_r)}.")
         chart(ch.scatter_with_line(DF, "Age", age_b0, age_b1, "Độ tuổi"))
     with row3[1], card("16"):
-        card_title("Lương theo nhóm tuổi")
+        chart_title("Lương theo nhóm tuổi", 13)
         chart(ch.group_mean_bar(an.group_salary(DF, "Age_Group", sort_by_mean=False),
                                 "Age_Group", height=345))
 
     with card("17"):
-        card_title("Ma trận tương quan",
-                   "Tuổi và kinh nghiệm tương quan rất mạnh với nhau, nên đưa cả hai vào "
-                   "một mô hình đa biến sẽ gây đa cộng tuyến.")
+        chart_title("Ma trận tương quan", 14,
+                    "Tuổi và kinh nghiệm tương quan rất mạnh với nhau, nên đưa cả hai vào "
+                    "một mô hình đa biến sẽ gây đa cộng tuyến.")
         corr = DF[["Age", "Experience_Years", "Salary"]].corr()
         chart(ch.correlation_heatmap(corr, {"Age": "Độ tuổi",
                                             "Experience_Years": "Kinh nghiệm",
