@@ -45,28 +45,124 @@ html, body, .stApp, .stApp p, .stApp label, .stApp li, .stApp h1, .stApp h2,
 .block-container { padding-top: 1.6rem; padding-bottom: 3rem; max-width: 1500px; }
 header[data-testid="stHeader"] { background: transparent; }
 
-/* Sidebar xanh navy */
-section[data-testid="stSidebar"] { background: #0F1E3D; }
-section[data-testid="stSidebar"] * { color: #E2E8F0; }
-section[data-testid="stSidebar"] [data-baseweb="select"] *,
-section[data-testid="stSidebar"] [data-baseweb="tag"] * { color: #1E293B; }
-section[data-testid="stSidebar"] [data-testid="stFileUploaderDropzone"] { background: #1B2B4F; }
-section[data-testid="stSidebar"] [data-testid="stFileUploaderDropzone"] button { color: #1E293B; }
-.brand { display: flex; gap: .7rem; align-items: center; margin: .2rem 0 1.4rem; }
-.brand-icon { width: 40px; height: 40px; border-radius: 10px; background: #2563EB;
-              display: grid; place-items: center; flex: none; }
-.brand-title { font-weight: 700; font-size: .98rem; line-height: 1.35; color: #FFFFFF; }
-[data-testid="stPageLink"] a { border-radius: 8px; padding: .45rem .7rem; }
-[data-testid="stPageLink"] a:hover { background: #1B2B4F; }
-[data-testid="stPageLink"] a[aria-current="page"],
-[data-testid="stPageLink-NavLink"][aria-current="page"] { background: #2563EB; }
-.side-label { font-size: .78rem; color: #94A3B8 !important; margin: 1.4rem 0 .3rem; }
+/* Sidebar theo mẫu: logo cột, menu xanh, bộ lọc xanh xám và sóng ở chân. */
+section[data-testid="stSidebar"] {
+    background: linear-gradient(160deg, #112246 0%, #0B1B3C 72%, #0B1B3C 100%);
+    border-right: 1px solid #18376C;
+    min-width: 258px;
+    width: 258px;
+}
+section[data-testid="stSidebar"] [data-testid="stSidebarContent"] {
+    position: relative;
+    min-height: 100vh;
+    padding: 1.25rem .9rem 7.5rem;
+    overflow-x: clip;
+}
+section[data-testid="stSidebar"] [data-testid="stSidebarContent"]::before,
+section[data-testid="stSidebar"] [data-testid="stSidebarContent"]::after {
+    content: "";
+    position: absolute;
+    left: -12%;
+    width: 125%;
+    height: 140px;
+    bottom: 0;
+    pointer-events: none;
+}
+section[data-testid="stSidebar"] [data-testid="stSidebarContent"]::before {
+    background: #12346D;
+    clip-path: polygon(0 8%, 25% 28%, 48% 56%, 73% 83%, 100% 42%, 100% 100%, 0 100%);
+}
+section[data-testid="stSidebar"] [data-testid="stSidebarContent"]::after {
+    background: linear-gradient(145deg, #164DAD, #102A62);
+    clip-path: polygon(0 0, 27% 42%, 52% 83%, 75% 100%, 0 100%);
+    opacity: .8;
+}
+section[data-testid="stSidebar"] [data-testid="stSidebarUserContent"] {
+    position: relative;
+    z-index: 1;
+}
+section[data-testid="stSidebar"] [data-testid="stSidebarCollapseButton"] button,
+section[data-testid="stSidebar"] [data-testid="stSidebarContent"] button[kind="header"] {
+    color: #CBD9F0;
+}
+.brand { display: flex; gap: .7rem; align-items: center; margin: .1rem 0 1.2rem; }
+.brand-bars { width: 34px; height: 35px; display: flex; align-items: end; gap: 3px; flex: none; }
+.brand-bars span { width: 5px; border-radius: 2px 2px 0 0; background: #E7EFFF;
+                   box-shadow: 0 0 10px #5D9BFF80; }
+.brand-bars span:nth-child(1) { height: 14px; }
+.brand-bars span:nth-child(2) { height: 23px; }
+.brand-bars span:nth-child(3) { height: 19px; }
+.brand-bars span:nth-child(4) { height: 30px; }
+.brand-bars span:nth-child(5) { height: 25px; }
+.brand-title { max-width: 172px; font-weight: 600; font-size: .76rem; line-height: 1.5; color: #F8FAFF; }
+section[data-testid="stSidebar"] [data-testid="stPageLink"] { margin-bottom: .18rem; }
+section[data-testid="stSidebar"] [data-testid="stPageLink"] a {
+    min-height: 39px; border-radius: 7px; padding: .52rem .7rem;
+    color: #C7D6F1; font-size: .84rem; font-weight: 500;
+}
+section[data-testid="stSidebar"] [data-testid="stPageLink"] a:hover { background: #1D3766; color: #FFFFFF; }
+section[data-testid="stSidebar"] [data-testid="stPageLink"] a[aria-current="page"],
+section[data-testid="stSidebar"] [data-testid="stPageLink-NavLink"][aria-current="page"] {
+    background: linear-gradient(90deg, #2374F4, #1D55BD);
+    box-shadow: 0 3px 12px #07153655;
+    color: #FFFFFF; font-weight: 600;
+}
+section[data-testid="stSidebar"] [data-testid="stPageLink"] a svg { color: currentColor; }
+.side-divider { height: 1px; background: #2B4167; margin: 1.25rem .2rem .9rem; }
+.side-label { display: flex; align-items: center; gap: .45rem; font-size: .82rem;
+              font-weight: 600; color: #DFE9FC; margin: 0 0 .65rem; }
+.side-label svg { opacity: .8; }
+section[data-testid="stSidebar"] [data-testid="stMultiSelect"] { margin-bottom: .35rem; }
+section[data-testid="stSidebar"] [data-testid="stMultiSelect"] label {
+    color: #D9E5F8; font-size: .78rem; font-weight: 500;
+}
+section[data-testid="stSidebar"] [data-testid="stMultiSelect"] [data-baseweb="select"] > div {
+    min-height: 38px; background: #344D76; border: 1px solid #45618D;
+    border-radius: 7px; box-shadow: none;
+}
+section[data-testid="stSidebar"] [data-testid="stMultiSelect"] [data-baseweb="select"] > div:hover {
+    border-color: #7A9ED6; background: #3A5683;
+}
+section[data-testid="stSidebar"] [data-testid="stMultiSelect"] [data-baseweb="select"] * {
+    color: #F2F6FF;
+}
+section[data-testid="stSidebar"] [data-testid="stMultiSelect"] input::placeholder {
+    color: #D5E0F1; opacity: 1;
+}
+section[data-testid="stSidebar"] [data-testid="stMultiSelect"] [data-baseweb="tag"] {
+    background: #1A5CC4;
+}
+.side-footer { position: fixed; bottom: 1.25rem; left: 1.35rem; z-index: 2;
+               display: flex; align-items: center; gap: .45rem; color: #AFC4E9;
+               font-size: .68rem; }
+.side-footer svg { opacity: .85; }
+@media (max-width: 700px) {
+    section[data-testid="stSidebar"] { width: min(258px, 88vw); min-width: 0; }
+}
+@media (max-height: 560px) {
+    .side-footer { position: static; margin-top: 2rem; }
+}
 
-/* Tiêu đề section */
-.page-head { display: flex; justify-content: space-between; align-items: flex-start;
-             gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; }
-.page-head h1 { font-size: 1.55rem; font-weight: 700; color: #0F1E3D; margin: 0; padding: 0; }
-.page-head p { color: #64748B; margin: .2rem 0 0; font-size: .92rem; }
+/* Tiêu đề trang */
+.page-head { display: flex; align-items: center; justify-content: space-between;
+             gap: 1rem; min-height: 68px; margin-bottom: 1rem; flex-wrap: wrap; }
+.page-head-main { display: flex; align-items: center; gap: .85rem; min-width: 0; }
+.page-head-icon { width: 48px; height: 48px; border-radius: 50%; flex: none;
+                  display: grid; place-items: center; background: #E6F0FF; }
+.page-head h1 { font-size: 1.55rem; line-height: 1.3; font-weight: 700;
+                color: #0F1E3D; margin: 0; padding: 0; }
+.page-head p { color: #64748B; margin: .2rem 0 0; font-size: .88rem; line-height: 1.5; }
+.page-head-meta { display: inline-flex; align-items: center; gap: .4rem;
+                  border: 1px solid #E0E8F4; background: #FFFFFF; border-radius: 8px;
+                  padding: .45rem .65rem; color: #50627E; font-size: .75rem;
+                  white-space: nowrap; box-shadow: 0 2px 8px #12234508; }
+@media (max-width: 700px) {
+    .page-head { align-items: flex-start; }
+    .page-head-main { align-items: flex-start; }
+    .page-head-icon { width: 42px; height: 42px; }
+    .page-head h1 { font-size: 1.35rem; }
+    .page-head-meta { margin-left: 56px; }
+}
 /* Thẻ KPI */
 .kpi { background: #FFFFFF; border: 1px solid #E3E8F0; border-radius: 12px;
        padding: 1rem 1.1rem; display: flex; gap: .85rem; align-items: center; height: 100%; }
@@ -118,6 +214,7 @@ section[data-testid="stSidebar"] [data-testid="stFileUploaderDropzone"] button {
 
 
 ICONS = {
+    "filter": '<path d="M3 5h18l-7 8v6l-4 2v-8L3 5Z"/>',
     "people": '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
     "coins": '<ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/>',
     "median": '<path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="6"/><rect x="12" y="8" width="3" height="10"/><rect x="17" y="5" width="3" height="13"/>',
@@ -138,9 +235,13 @@ def kpi_card(label: str, value: str, icon: str, color: str, bg: str) -> str:
             f'<div class="kpi-value">{value}</div></div></div>')
 
 
-def page_head(title: str, subtitle: str) -> None:
+def page_head(title: str, subtitle: str, icon: str = "people") -> None:
     st.markdown(
-        f'<div class="page-head"><div><h1>{title}</h1><p>{subtitle}</p></div></div>',
+        f'<div class="page-head"><div class="page-head-main">'
+        f'<div class="page-head-icon" aria-hidden="true">{svg(icon, "#2563EB", 24)}</div>'
+        f'<div><h1>{escape(title)}</h1><p>{escape(subtitle)}</p></div></div>'
+        f'<div class="page-head-meta">{svg("people", "#64748B", 14)}'
+        f'<span>Đang xem: {vn(len(DF))} nhân viên</span></div></div>',
         unsafe_allow_html=True,
     )
 
@@ -255,7 +356,7 @@ def page_overview() -> None:
 # ==========================================================================
 def page_salary() -> None:
     page_head("Phân tích lương",
-              "So sánh mức lương theo phòng ban, chức danh, học vấn và địa điểm.")
+              "So sánh mức lương theo phòng ban, chức danh, học vấn và địa điểm.", "coins")
 
     dept = an.group_salary(DF, "Department")
     row1 = st.columns(2)
@@ -308,7 +409,7 @@ def page_salary() -> None:
 # ==========================================================================
 def page_regression() -> None:
     page_head("Kinh nghiệm & mức lương",
-              "Quan hệ giữa kinh nghiệm, độ tuổi và lương; mô hình hồi quy tuyến tính.")
+              "Quan hệ giữa kinh nghiệm, độ tuổi và lương; mô hình hồi quy tuyến tính.", "up")
 
     if len(DF) < 30:
         st.warning("Cần ít nhất 30 nhân viên để xây dựng mô hình hồi quy. Hãy nới bộ lọc bên trái.")
@@ -420,7 +521,8 @@ current = st.navigation(pages, position="hidden")
 
 with st.sidebar:
     st.markdown(
-        f'<div class="brand"><div class="brand-icon">{svg("people", "#FFFFFF")}</div>'
+        '<div class="brand"><div class="brand-bars" aria-hidden="true">'
+        '<span></span><span></span><span></span><span></span><span></span></div>'
         '<div class="brand-title">Phân tích và trực quan hóa dữ liệu lương nhân viên</div></div>',
         unsafe_allow_html=True,
     )
@@ -439,10 +541,19 @@ except FileNotFoundError:
 st.session_state["report"] = report
 
 with st.sidebar:
-    st.markdown('<div class="side-label">Bộ lọc</div>', unsafe_allow_html=True)
-    f_dept = st.multiselect("Phòng ban", sorted(FULL["Department"].unique()), placeholder="Tất cả")
-    f_loc = st.multiselect("Địa điểm", sorted(FULL["Location"].unique()), placeholder="Tất cả")
-    f_gender = st.multiselect("Giới tính", sorted(FULL["Gender"].unique()), placeholder="Tất cả")
+    st.markdown(
+        f'<div class="side-divider"></div><div class="side-label">'
+        f'{svg("filter", "#BBD1F7", 16)}<span>Bộ lọc dữ liệu</span></div>',
+        unsafe_allow_html=True,
+    )
+    f_dept = st.multiselect(":material/groups: Phòng ban", sorted(FULL["Department"].unique()), placeholder="Tất cả")
+    f_loc = st.multiselect(":material/location_on: Địa điểm", sorted(FULL["Location"].unique()), placeholder="Tất cả")
+    f_gender = st.multiselect(":material/person: Giới tính", sorted(FULL["Gender"].unique()), placeholder="Tất cả")
+    st.markdown(
+        f'<div class="side-footer">{svg("median", "#C6D8F7", 16)}'
+        ,
+        unsafe_allow_html=True,
+    )
 
 DF = FULL
 if f_dept:
