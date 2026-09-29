@@ -72,7 +72,10 @@ section[data-testid="stSidebar"] [data-testid="stSidebarHeader"] {
     z-index: 2;
 }
 section[data-testid="stSidebar"] [data-testid="stSidebarUserContent"] {
-   section[data-testid="stSidebar"] [data-testid="stSidebarCollapseButton"] button,
+    position: relative;
+    margin-top: -3.5rem;
+}
+section[data-testid="stSidebar"] [data-testid="stSidebarCollapseButton"] button,
 section[data-testid="stSidebar"] [data-testid="stSidebarContent"] button[kind="header"] {
     color: #5C78A5;
 }
