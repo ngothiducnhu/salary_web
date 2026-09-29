@@ -406,7 +406,7 @@ def page_regression() -> None:
         )
        
         INPUT_BG = "#EEF3FF"
-        st.markdown('<div style="font-weight:600; font-size:1rem; color:#0F1E3D'
+        st.markdown('<div style="font-weight:600; font-size:1rem; color:#0F1E3D; &nbsp;'
                     'margin:.8rem 0 .4rem;">Dự đoán lương theo số năm kinh nghiệm</div>',
                     unsafe_allow_html=True)
 
@@ -479,7 +479,7 @@ inject_css()
 pages = [
     st.Page(page_overview, title="Tổng quan", icon=":material/home:", url_path="tong-quan", default=True),
     st.Page(page_salary, title="Phân tích lương", icon=":material/finance:", url_path="phan-tich-luong"),
-    st.Page(page_regression, title="Kinh nghiệm & hồi quy", icon=":material/trending_up:", url_path="hoi-quy"),
+    st.Page(page_regression, title="Kinh nghiệm & mức lương", icon=":material/trending_up:", url_path="hoi-quy"),
 ]
 current = st.navigation(pages, position="hidden")
 
