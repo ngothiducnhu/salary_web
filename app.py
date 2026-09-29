@@ -109,7 +109,7 @@ section[data-testid="stSidebar"] [data-testid="stPageLink"] a svg { color: curre
 .side-label svg { opacity: .8; }
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] { margin-bottom: .35rem; }
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] label {
-    color: #4A6692; font-size: .78rem; font-weight: 500;
+    color: #F7FAFF; font-size: .78rem; font-weight: 500;
 }
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] [data-baseweb="select"] > div {
     min-height: 38px; background: #F7FAFF; border: 1px solid #C9D9F0;
