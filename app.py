@@ -43,7 +43,7 @@ html, body, .stApp, .stApp p, .stApp label, .stApp li, .stApp h1, .stApp h2,
 }
 .stApp { background: #F1F6FC; }
 .block-container {
-    padding: 0.8rem 3rem 3rem;
+    padding: 0.5rem 3rem 3rem;
     max-width: none;
 }
 header[data-testid="stHeader"] { background: transparent; }
@@ -114,7 +114,7 @@ section[data-testid="stSidebar"] [data-testid="stPageLink"] a:hover { background
 section[data-testid="stSidebar"] [data-testid="stPageLink"] a[aria-current="page"],
 section[data-testid="stSidebar"] [data-testid="stPageLink-NavLink"][aria-current="page"] {
     background: #EAF2FF;
-    box-shadow: inset 4px 0 0 #3B82F6;
+    box-shadow: inset 3px 0 0 #3B82F6, 0 2px 8px rgba(59, 130, 246, .18);border-radius: 8px;
     color: #2563EB !important; font-weight: 700;
 }
 section[data-testid="stSidebar"] [data-testid="stPageLink"] a svg { color: currentColor; }
@@ -159,7 +159,7 @@ section[data-testid="stSidebar"] [data-baseweb="menu"] [role="option"]:first-chi
 
 /* Tiêu đề trang */
 .page-head { display: flex; align-items: center; min-height: 68px; margin-bottom: 1rem; }
-.page-head h1 { font-size: 1.55rem; line-height: 1.3; font-weight: 600;
+.page-head h1 { font-size: 1.55rem; line-height: 1.3; font-weight: 500;
                 color: #0F1E3D; margin: 0; padding: 0; }
 .page-head p { color: #64748B; margin: .2rem 0 0; font-size: .88rem; line-height: 1.5; }
 @media (max-width: 700px) {
