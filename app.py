@@ -89,7 +89,7 @@ section[data-testid="stSidebar"] [data-testid="stSidebarContent"] button[kind="h
 section[data-testid="stSidebar"] [data-testid="stPageLink"] { margin-bottom: .18rem; }
 section[data-testid="stSidebar"] [data-testid="stPageLink"] a {
     min-height: 39px; border-radius: 7px; padding: .52rem .7rem;
-    color: #6079A2; font-size: .84rem; font-weight: 500;
+    color: #45638F; font-size: .84rem; font-weight: 500;
 }
 section[data-testid="stSidebar"] [data-testid="stPageLink"] a:hover { background: #EAF2FF; color: #2868DF; }
 section[data-testid="stSidebar"] [data-testid="stPageLink"] a[aria-current="page"],
@@ -105,7 +105,7 @@ section[data-testid="stSidebar"] [data-testid="stPageLink"] a svg { color: curre
 .side-label svg { opacity: .8; }
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] { margin-bottom: .35rem; }
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] label {
-    color: #6079A2; font-size: .78rem; font-weight: 500;
+    color: #4A6692; font-size: .78rem; font-weight: 500;
 }
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] [data-baseweb="select"] > div {
     min-height: 38px; background: #F7FAFF; border: 1px solid #C9D9F0;
@@ -115,10 +115,10 @@ section[data-testid="stSidebar"] [data-testid="stMultiSelect"] [data-baseweb="se
     border-color: #78A6F2; background: #FFFFFF;
 }
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] [data-baseweb="select"] * {
-    color: #29456F;
+    color: #203B68;
 }
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] input::placeholder {
-    color: #7A91B5; opacity: 1;
+    color: #5C76A0; opacity: 1;
 }
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] [data-baseweb="tag"] {
     background: #DDEAFF; color: #2868DF;
