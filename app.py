@@ -77,7 +77,7 @@ section[data-testid="stSidebar"] [data-testid="stSidebarUserContent"] {
 }
 section[data-testid="stSidebar"] [data-testid="stSidebarCollapseButton"] button,
 section[data-testid="stSidebar"] [data-testid="stSidebarContent"] button[kind="header"] {
-    color: #5C78A5;
+    color: #5C78A5; transform: translateY(-5px);
 }
 section[data-testid="stSidebar"] [data-testid="stSidebarCollapseButton"] button {
     transform: translateY(-5px);
