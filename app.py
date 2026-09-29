@@ -533,7 +533,15 @@ with st.sidebar:
         unsafe_allow_html=True,
     )
     for p in pages:
-        st.page_link(p, label=p.title, icon=p.icon)
+        with st.container(key=f"nav_{p.url_path}"):
+            st.page_link(p, label=p.title, icon=p.icon)
+    st.markdown(
+        f'<style>.st-key-nav_{current.url_path} a {{'
+        'background: #EAF2FF !important; border-radius: 8px !important;'
+        'box-shadow: inset 3px 0 0 #3B82F6, 0 2px 8px rgba(59, 130, 246, .18) !important;'
+        'color: #2563EB !important; font-weight: 700 !important; }}</style>',
+        unsafe_allow_html=True,
+    )
 
 try:
     FULL, report = load_data()
