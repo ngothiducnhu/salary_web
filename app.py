@@ -86,15 +86,15 @@ section[data-testid="stSidebar"] [data-testid="stSidebarCollapseButton"] button 
     transform: translateY(-5px);
 }
 .brand { display: flex; gap: .7rem; align-items: center; margin: .1rem 0 2rem; }
-.brand-bars { width: 35px; height: 35px; display: flex; align-items: end; gap: 3px; flex: none; }
-.brand-bars span { width: 5px; border-radius: 2px 2px 0 0; background: #4B82F1;
+.brand-bars { width: 28px; height: 28px; display: flex; align-items: end; gap: 2px; flex: none; }
+.brand-bars span { width: 4px; border-radius: 2px 2px 0 0; background: #4B82F1;
                    box-shadow: 0 0 10px #5D9BFF55; }
-.brand-bars span:nth-child(1) { height: 14px; }
-.brand-bars span:nth-child(2) { height: 23px; }
-.brand-bars span:nth-child(3) { height: 19px; }
-.brand-bars span:nth-child(4) { height: 30px; }
-.brand-bars span:nth-child(5) { height: 25px; }
-.brand-title { max-width: 180px; font-weight: 600; font-size: 0.95rem; line-height: 1.7; color: #19315C; }
+.brand-bars span:nth-child(1) { height: 11px; }
+.brand-bars span:nth-child(2) { height: 18px; }
+.brand-bars span:nth-child(3) { height: 15px; }
+.brand-bars span:nth-child(4) { height: 24px; }
+.brand-bars span:nth-child(5) { height: 20px; }
+.brand-title { max-width: 180px; font-weight: 600; font-size: 0.95rem; line-height: 1.35; color: #19315C; }
 section[data-testid="stSidebar"] [data-testid="stPageLink"] { margin-bottom: .18rem; }
 section[data-testid="stSidebar"] [data-testid="stPageLink"] a {
     min-height: 39px; border-radius: 7px; padding: .52rem .7rem;
