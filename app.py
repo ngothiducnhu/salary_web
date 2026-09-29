@@ -94,7 +94,7 @@ section[data-testid="stSidebar"] [data-testid="stSidebarCollapseButton"] button 
 .brand-bars span:nth-child(3) { height: 15px; }
 .brand-bars span:nth-child(4) { height: 24px; }
 .brand-bars span:nth-child(5) { height: 20px; }
-.brand-title { max-width: 180px; font-weight: 600; font-size: 0.95rem; line-height: 1.35; color: #19315C; }
+.brand-title { max-width: 180px; font-weight: 600; font-size: 0.95rem; line-height: 1.8; color: #19315C; }
 section[data-testid="stSidebar"] [data-testid="stPageLink"] { margin-bottom: .18rem; }
 section[data-testid="stSidebar"] [data-testid="stPageLink"] a {
     min-height: 39px; border-radius: 7px; padding: .52rem .7rem;
