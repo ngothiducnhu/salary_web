@@ -517,6 +517,7 @@ with st.sidebar:
         '<div class="brand"><div class="brand-bars" aria-hidden="true">'
         '<span></span><span></span><span></span><span></span><span></span></div>'
         '<div class="brand-title">LƯƠNG NHÂN VIÊN</div></div>',
+        '<div class="brand-sub">Phân tích &amp; Trực quan hóa dữ liệu</div>'
         unsafe_allow_html=True,
     )
     for p in pages:
@@ -536,7 +537,7 @@ st.session_state["report"] = report
 with st.sidebar:
     st.markdown(
         f'<div class="side-divider"></div><div class="side-label">'
-        f'{svg("filter", "#4B82F1", 16)}<span>Bộ lọc dữ liệu</span></div>',
+        f'{svg("filter", "#4B82F1", 16)}&nbsp;<span>Bộ lọc dữ liệu</span></div>',
         unsafe_allow_html=True,
     )
     f_dept = st.multiselect(":material/groups: Phòng ban", sorted(FULL["Department"].unique()), placeholder="Tất cả")
