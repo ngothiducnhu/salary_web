@@ -100,9 +100,10 @@ section[data-testid="stSidebar"] [data-testid="stPageLink"] a[aria-current="page
 section[data-testid="stSidebar"] [data-testid="stPageLink-NavLink"][aria-current="page"] {
     background: #EAF2FF;
     box-shadow: inset 4px 0 0 #3B82F6;
-    color: #2563EB !important; font-weight: 700;
-}
-section[data-testid="stSidebar"] [data-testid="stPageLink"] a svg { color: currentColor; }
+   .side-label { display: flex; align-items: center; gap: .45rem; font-size: .92rem;
+             color: #1B315A !important; font-weight: 600; margin: 0 0 .65rem; }
+.side-label span { color: #1B315A !important; opacity: 1 !important; }
+.side-label svg { opacity: 1; }
 .side-divider { height: 1px; background: #E2EAF5; margin: 1.25rem .2rem .9rem; }
 .side-label { display: flex; align-items: center; gap: .45rem; font-size: .92rem;
              color: #C9D9F0; margin: 0 0 .65rem; }
@@ -113,12 +114,12 @@ section[data-testid="stSidebar"] [data-testid="stMultiSelect"] label {
 }
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] [data-baseweb="select"] > div {
     min-height: 38px; background: #F7FAFF; border: 1px solid #C9D9F0;
-    border-radius: 7px; box-shadow: none;
+   section[data-testid="stSidebar"] [data-testid="stMultiSelect"] [data-baseweb="select"] * {
+    color: #203B68 !important; opacity: 1 !important;
 }
-section[data-testid="stSidebar"] [data-testid="stMultiSelect"] [data-baseweb="select"] > div:hover {
-    border-color: #78A6F2; background: #FFFFFF;
+section[data-testid="stSidebar"] [data-testid="stMultiSelect"] input::placeholder {
+    color: #203B68 !important; -webkit-text-fill-color: #203B68 !important; opacity: 1 !important;
 }
-section[data-testid="stSidebar"] [data-testid="stMultiSelect"] [data-baseweb="select"] * {
     color: #C4D0E9;
 }
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] input::placeholder {
