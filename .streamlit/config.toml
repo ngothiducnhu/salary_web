@@ -6,11 +6,11 @@ secondaryBackgroundColor = "#EEF2F8"
 textColor = "#1E293B"
 
 [theme.sidebar]
-backgroundColor = "#0F1E3D"
-secondaryBackgroundColor = "#cedaee"
-textColor = "#E2E8F0"
-primaryColor = "#4F91FF"
-borderColor = "#18376C"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F5F8FF"
+textColor = "#1B315A"
+primaryColor = "#2563EB"
+borderColor = "#D6E2F5"
 
 [server]
 maxUploadSize = 50
