@@ -136,6 +136,14 @@ section[data-testid="stSidebar"] [data-testid="stMultiSelect"] input::placeholde
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] [data-baseweb="tag"] {
     background: #DDEAFF; color: #2868DF;
 }
+section[data-testid="stSidebar"] [data-baseweb="menu"] [role="option"]:first-child {
+    font-size: 0;
+}
+section[data-testid="stSidebar"] [data-baseweb="menu"] [role="option"]:first-child::after {
+    content: "Chọn tất cả";
+    font-size: .85rem;
+    color: #1B315A;
+}
 @media (max-width: 700px) {
     section[data-testid="stSidebar"] { width: min(258px, 88vw); min-width: 0; }
 }
