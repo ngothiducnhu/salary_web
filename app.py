@@ -122,7 +122,7 @@ section[data-testid="stSidebar"] [data-testid="stMultiSelect"] [data-baseweb="se
     color: #C4D0E9;
 }
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] input::placeholder {
-    color: #5C76A0; opacity: 1;
+    color: #C4D0E9; opacity: 1;
 }
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] [data-baseweb="tag"] {
     background: #DDEAFF; color: #2868DF;
