@@ -118,13 +118,16 @@ section[data-testid="stSidebar"] [data-testid="stPageLink-NavLink"][aria-current
     color: #2563EB !important; font-weight: 700;
 }
 section[data-testid="stSidebar"] [data-testid="stPageLink"] a svg { color: currentColor; }
-.side-divider { height: 1px; background: #E2EAF5; margin: 1.25rem .2rem .9rem; }
+.side-divider { height: 1px; background: #E2EAF5; margin: 1.25rem .2rem 1.2rem; }
 .side-label { display: flex; align-items: center; gap: .45rem; font-size: .92rem;
              color: #1B315A; margin: 0 0 .65rem; }
 .side-label svg { opacity: .8; }
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] { margin-bottom: .35rem; }
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] label {
-    color: #4A6692; font-size: .78rem; font-weight: 500;
+    color: #2563EB; font-size: .78rem; font-weight: 500;
+}
+section[data-testid="stSidebar"] [data-testid="stMultiSelect"] label * {
+    color: inherit !important;
 }
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] [data-baseweb="select"] > div {
     min-height: 38px; background: #F7FAFF; border: 1px solid #C9D9F0;
@@ -137,7 +140,7 @@ section[data-testid="stSidebar"] [data-testid="stMultiSelect"] [data-baseweb="se
     color: #1B315A;
 }
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] input::placeholder {
-    color: #1B315A; opacity: 1;
+    color: #4A6692; opacity: 1;
 }
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] [data-baseweb="tag"] {
     background: #DDEAFF; color: #2868DF;
@@ -546,7 +549,7 @@ st.session_state["report"] = report
 with st.sidebar:
     st.markdown(
         f'<div class="side-divider"></div><div class="side-label">'
-        f'{svg("filter", "#4B82F1", 16)}<br><span>Bộ lọc dữ liệu</span></div>',
+        f'{svg("filter", "#4B82F1", 16)}<span>Bộ lọc dữ liệu</span></div>',
         unsafe_allow_html=True,
     )
     f_dept = st.multiselect(":material/groups: Phòng ban", sorted(FULL["Department"].unique()), placeholder="Tất cả")
