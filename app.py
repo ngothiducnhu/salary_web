@@ -42,7 +42,10 @@ html, body, .stApp, .stApp p, .stApp label, .stApp li, .stApp h1, .stApp h2,
     font-family: 'Be Vietnam Pro', 'Segoe UI', Arial, sans-serif;
 }
 .stApp { background: #F1F6FC; }
-.block-container { padding-top: 1.6rem; padding-bottom: 3rem; max-width: 1500px; }
+.block-container {
+    padding: 1.6rem 1rem 3rem;
+    max-width: none;
+}
 header[data-testid="stHeader"] { background: transparent; }
 
 /* Sidebar theo mẫu: logo cột, menu xanh và bộ lọc xanh xám. */
@@ -75,6 +78,9 @@ section[data-testid="stSidebar"] [data-testid="stSidebarUserContent"] {
 section[data-testid="stSidebar"] [data-testid="stSidebarCollapseButton"] button,
 section[data-testid="stSidebar"] [data-testid="stSidebarContent"] button[kind="header"] {
     color: #5C78A5;
+}
+section[data-testid="stSidebar"] [data-testid="stSidebarCollapseButton"] button {
+    transform: translateY(-5px);
 }
 .brand { display: flex; gap: .7rem; align-items: center; margin: .1rem 0 2rem; }
 .brand-bars { width: 35px; height: 35px; display: flex; align-items: end; gap: 3px; flex: none; }
