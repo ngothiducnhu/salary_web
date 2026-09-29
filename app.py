@@ -105,7 +105,7 @@ section[data-testid="stSidebar"] [data-testid="stPageLink-NavLink"][aria-current
 section[data-testid="stSidebar"] [data-testid="stPageLink"] a svg { color: currentColor; }
 .side-divider { height: 1px; background: #E2EAF5; margin: 1.25rem .2rem .9rem; }
 .side-label { display: flex; align-items: center; gap: .45rem; font-size: .92rem;
-             color: #1B315A; margin: 0 0 .65rem; }
+             color: #C9D9F0; margin: 0 0 .65rem; }
 .side-label svg { opacity: .8; }
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] { margin-bottom: .35rem; }
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] label {
