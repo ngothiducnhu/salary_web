@@ -98,7 +98,7 @@ section[data-testid="stSidebar"] [data-testid="stSidebarCollapseButton"] button 
 .brand-bars span:nth-child(5) { height: 20px; }
 .brand-text { display: flex; flex-direction: column; min-width: 0;
                             padding-left: 0; }
-.brand-title { font-weight: 700; font-size: 1.05rem; line-height: 1.3; color: #19315C;
+.brand-title { font-weight: 700; font-size: calc(1.05rem + 2px); line-height: 1.3; color: #19315C;
                letter-spacing: .02em; white-space: nowrap; }
 .brand-sub { font-size: .76rem; line-height: 1.4; color: #5C78A5; margin-top: .25rem; }
 section[data-testid="stSidebar"] [data-testid="stPageLink"] { margin-bottom: .18rem; }
@@ -533,7 +533,7 @@ with st.sidebar:
     st.markdown(
         f'<style>.st-key-nav_{current.url_path} a {{'
         'background: #EAF2FF !important; border-radius: 8px !important;'
-        'box-shadow: inset 3px 0 0 #3B82F6, 0 2px 6px rgba(59, 130, 246, .18) !important;'
+        'box-shadow: inset 3px 0 0 #3B82F6, 0 1px 4px rgba(59, 130, 246, .18) !important;'
         'color: #2563EB !important; font-weight: 700 !important; }}</style>',
         unsafe_allow_html=True,
     )
