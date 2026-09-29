@@ -83,7 +83,7 @@ section[data-testid="stSidebar"] [data-testid="stSidebarContent"] button[kind="h
 section[data-testid="stSidebar"] [data-testid="stPageLink"] { margin-bottom: .18rem; }
 section[data-testid="stSidebar"] [data-testid="stPageLink"] a {
     min-height: 39px; border-radius: 7px; padding: .52rem .7rem;
-    color: #526B96; font-size: .84rem; font-weight: 500;
+    color: #58709A; font-size: .84rem; font-weight: 500;
 }
 section[data-testid="stSidebar"] [data-testid="stPageLink"] a:hover { background: #EAF2FF; color: #2868DF; }
 section[data-testid="stSidebar"] [data-testid="stPageLink"] a[aria-current="page"],
@@ -95,11 +95,11 @@ section[data-testid="stSidebar"] [data-testid="stPageLink-NavLink"][aria-current
 section[data-testid="stSidebar"] [data-testid="stPageLink"] a svg { color: currentColor; }
 .side-divider { height: 1px; background: #E2EAF5; margin: 1.25rem .2rem .9rem; }
 .side-label { display: flex; align-items: center; gap: .45rem; font-size: .92rem;
-             color: #233D6B; margin: 0 0 .65rem; }
+             color: #19315C; margin: 0 0 .65rem; }
 .side-label svg { opacity: .8; }
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] { margin-bottom: .35rem; }
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] label {
-    color: #526B96; font-size: .78rem; font-weight: 500;
+    color: #58709A; font-size: .78rem; font-weight: 500;
 }
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] [data-baseweb="select"] > div {
     min-height: 38px; background: #F7FAFF; border: 1px solid #C9D9F0;
@@ -141,7 +141,9 @@ section[data-testid="stSidebar"] [data-testid="stMultiSelect"] [data-baseweb="ta
 
 /* Khung chart: st.container(border=True, key="card_...") */
 [class*="st-key-card_"] { background: #FFFFFF; border-radius: 12px;
-                          border-color: #E3E8F0 !important; overflow: visible; }
+                          border: 1px solid #DCE7F5 !important;
+                          box-shadow: 0 5px 18px rgba(49, 86, 139, .09);
+                          overflow: visible; }
 .card-title { font-weight: 600; font-size: .95rem; color: #0F1E3D;
               margin-bottom: .1rem; white-space: normal; overflow-wrap: anywhere; }
 .card-note { font-size: .8rem; color: #64748B; margin-bottom: .2rem; }
@@ -507,7 +509,7 @@ st.session_state["report"] = report
 with st.sidebar:
     st.markdown(
         f'<div class="side-divider"></div><div class="side-label">'
-        f'{svg("filter", "#BBD1F7", 16)}<span>Bộ lọc dữ liệu</span></div>',
+        f'{svg("filter", "#4B82F1", 16)}<span>Bộ lọc dữ liệu</span></div>',
         unsafe_allow_html=True,
     )
     f_dept = st.multiselect(":material/groups: Phòng ban", sorted(FULL["Department"].unique()), placeholder="Tất cả")
