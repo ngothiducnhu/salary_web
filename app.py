@@ -89,7 +89,7 @@ section[data-testid="stSidebar"] [data-testid="stSidebarContent"] button[kind="h
 section[data-testid="stSidebar"] [data-testid="stPageLink"] { margin-bottom: .18rem; }
 section[data-testid="stSidebar"] [data-testid="stPageLink"] a {
     min-height: 39px; border-radius: 7px; padding: .52rem .7rem;
-    color: #45638F; font-size: .84rem; font-weight: 500;
+    color: #475569; font-size: .84rem; font-weight: 500;
 }
 section[data-testid="stSidebar"] [data-testid="stPageLink"] a:hover { background: #EAF2FF; color: #2868DF; }
 section[data-testid="stSidebar"] [data-testid="stPageLink"] a[aria-current="page"],
