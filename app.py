@@ -89,14 +89,18 @@ section[data-testid="stSidebar"] [data-testid="stSidebarContent"] button[kind="h
 section[data-testid="stSidebar"] [data-testid="stPageLink"] { margin-bottom: .18rem; }
 section[data-testid="stSidebar"] [data-testid="stPageLink"] a {
     min-height: 39px; border-radius: 7px; padding: .52rem .7rem;
-    color: #475569; font-size: .84rem; font-weight: 500;
+    color: #1B315A !important; font-size: .84rem; font-weight: 600;
+    opacity: 1 !important;
 }
-section[data-testid="stSidebar"] [data-testid="stPageLink"] a:hover { background: #EAF2FF; color: #2868DF; }
+section[data-testid="stSidebar"] [data-testid="stPageLink"] a * {
+    color: inherit !important; opacity: 1 !important;
+}
+section[data-testid="stSidebar"] [data-testid="stPageLink"] a:hover { background: #EAF2FF; color: #2868DF !important; }
 section[data-testid="stSidebar"] [data-testid="stPageLink"] a[aria-current="page"],
 section[data-testid="stSidebar"] [data-testid="stPageLink-NavLink"][aria-current="page"] {
     background: #EAF2FF;
     box-shadow: inset 4px 0 0 #3B82F6;
-    color: #3678E8; font-weight: 600;
+    color: #2563EB !important; font-weight: 700;
 }
 section[data-testid="stSidebar"] [data-testid="stPageLink"] a svg { color: currentColor; }
 .side-divider { height: 1px; background: #E2EAF5; margin: 1.25rem .2rem .9rem; }
