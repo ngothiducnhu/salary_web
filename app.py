@@ -118,7 +118,7 @@ section[data-testid="stSidebar"] [data-testid="stPageLink-NavLink"][aria-current
     color: #2563EB !important; font-weight: 700;
 }
 section[data-testid="stSidebar"] [data-testid="stPageLink"] a svg { color: currentColor; }
-.side-divider { height: 1px; background: #E2EAF5; margin: 1.25rem .2rem 1.6rem; }
+.side-divider { height: 1px; background: #E2EAF5; margin: 1.25rem .2rem 2rem; }
 .side-label { display: flex; align-items: center; gap: .45rem; font-size: .92rem;
              color: #1B315A; margin: 0 0 .65rem; }
 .side-label svg { opacity: .8; }
