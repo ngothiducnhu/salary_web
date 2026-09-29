@@ -96,8 +96,6 @@ section[data-testid="stSidebar"] [data-testid="stSidebarCollapseButton"] button 
 .brand-bars span:nth-child(3) { height: 15px; }
 .brand-bars span:nth-child(4) { height: 24px; }
 .brand-bars span:nth-child(5) { height: 20px; }
-.brand-text { display: flex; flex-direction: column; min-width: 0;
-              padding-left: .85rem; border-left: 1px solid #E2EAF5; }
 .brand-title { font-weight: 700; font-size: 1.05rem; line-height: 1.3; color: #19315C;
                letter-spacing: .02em; white-space: nowrap; }
 .brand-sub { font-size: .76rem; line-height: 1.4; color: #5C78A5; margin-top: .25rem; }
@@ -524,7 +522,7 @@ with st.sidebar:
         '<div class="brand-bars">'
         '<span></span><span></span><span></span><span></span><span></span>'
         '</div></div>'
-        '<div class="brand-text">'
+       # '<div class="brand-text">'
         '<div class="brand-title">LƯƠNG NHÂN VIÊN</div>'
         '<div class="brand-sub">Phân tích &amp; Trực quan hóa dữ liệu</div></div>',
         unsafe_allow_html=True,
