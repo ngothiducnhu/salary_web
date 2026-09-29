@@ -546,7 +546,7 @@ st.session_state["report"] = report
 with st.sidebar:
     st.markdown(
         f'<div class="side-divider"></div><div class="side-label">'
-        f'{svg("filter", "#4B82F1", 16)}&nbsp;<span>Bộ lọc dữ liệu</span></div>',
+        f'{svg("filter", "#4B82F1", 16)}<br><span>Bộ lọc dữ liệu</span></div>',
         unsafe_allow_html=True,
     )
     f_dept = st.multiselect(":material/groups: Phòng ban", sorted(FULL["Department"].unique()), placeholder="Tất cả")
