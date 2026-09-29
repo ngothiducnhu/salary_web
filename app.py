@@ -107,22 +107,24 @@ section[data-testid="stSidebar"] [data-testid="stPageLink"] a svg { color: curre
 .side-label { display: flex; align-items: center; gap: .45rem; font-size: .92rem;
              color: #1B315A; margin: 0 0 .65rem; }
 .side-label svg { opacity: .8; }
-section[data-testid="stSidebar"] [data-testid="stMultiSelect"] { margin-bottom: .35rem; }
-section[data-testid="stSidebar"] [data-testid="stMultiSelect"] label {
-    color: #4A6692; font-size: .78rem; font-weight: 500;
-}
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] [data-baseweb="select"] > div {
-    min-height: 38px; background: #F7FAFF; border: 1px solid #C9D9F0;
-    border-radius: 7px; box-shadow: none;
+    min-height: 40px; background: #F5F8FF !important; border: 1px solid #D6E2F5 !important;
+    border-radius: 10px; box-shadow: none;
+}
+section[data-testid="stSidebar"] [data-testid="stMultiSelect"] [data-baseweb="select"] > div * {
+    background: transparent !important;
 }
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] [data-baseweb="select"] > div:hover {
-    border-color: #78A6F2; background: #FFFFFF;
+    border-color: #78A6F2 !important; background: #FFFFFF !important;
 }
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] [data-baseweb="select"] * {
-    color: #203B68;
+    color: #203B68 !important;
 }
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] input::placeholder {
-    color: #5C76A0; opacity: 1;
+    color: #203B68 !important; opacity: 1;
+}
+section[data-testid="stSidebar"] [data-testid="stMultiSelect"] [data-baseweb="tag"] {
+    background: #DDEAFF !important; color: #2868DF !important;
 }
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] [data-baseweb="tag"] {
     background: #DDEAFF; color: #2868DF;
