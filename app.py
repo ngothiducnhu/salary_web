@@ -105,7 +105,7 @@ section[data-testid="stSidebar"] [data-testid="stPageLink-NavLink"][aria-current
 section[data-testid="stSidebar"] [data-testid="stPageLink"] a svg { color: currentColor; }
 .side-divider { height: 1px; background: #E2EAF5; margin: 1.25rem .2rem .9rem; }
 .side-label { display: flex; align-items: center; gap: .45rem; font-size: .92rem;
-             color: #C9D9F0; margin: 0 0 .65rem; }
+             color: #1B315A; margin: 0 0 .65rem; }
 .side-label svg { opacity: .8; }
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] { margin-bottom: .35rem; }
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] label {
@@ -119,10 +119,10 @@ section[data-testid="stSidebar"] [data-testid="stMultiSelect"] [data-baseweb="se
     border-color: #78A6F2; background: #FFFFFF;
 }
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] [data-baseweb="select"] * {
-    color: #C4D0E9;
+    color: #1B315A;
 }
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] input::placeholder {
-    color: #C4D0E9; opacity: 1;
+    color: #1B315A; opacity: 1;
 }
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] [data-baseweb="tag"] {
     background: #DDEAFF; color: #2868DF;
