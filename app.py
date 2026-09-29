@@ -43,7 +43,7 @@ html, body, .stApp, .stApp p, .stApp label, .stApp li, .stApp h1, .stApp h2,
 }
 .stApp { background: #F1F6FC; }
 .block-container {
-    padding: 1.6rem 1rem 3rem;
+    padding: 1.6rem 3rem 3rem;
     max-width: none;
 }
 header[data-testid="stHeader"] { background: transparent; }
