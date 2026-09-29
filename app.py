@@ -111,11 +111,6 @@ section[data-testid="stSidebar"] [data-testid="stPageLink"] a * {
     color: inherit !important; opacity: 1 !important;
 }
 section[data-testid="stSidebar"] [data-testid="stPageLink"] a:hover { background: #EAF2FF; color: #2868DF !important; }
-section[data-testid="stSidebar"] [data-testid="stPageLink"] a[aria-current="page"],
-section[data-testid="stSidebar"] [data-testid="stPageLink-NavLink"][aria-current="page"] {
-    background: #EAF2FF;
-    box-shadow: inset 3px 0 0 #3B82F6, 0 2px 8px rgba(59, 130, 246, .18);border-radius: 8px;
-    color: #2563EB !important; font-weight: 700;
 }
 section[data-testid="stSidebar"] [data-testid="stPageLink"] a svg { color: currentColor; }
 .side-divider { height: 1px; background: #E2EAF5; margin: 1.25rem .2rem 2rem; }
@@ -538,7 +533,7 @@ with st.sidebar:
     st.markdown(
         f'<style>.st-key-nav_{current.url_path} a {{'
         'background: #EAF2FF !important; border-radius: 8px !important;'
-        'box-shadow: inset 3px 0 0 #3B82F6, 0 2px 8px rgba(59, 130, 246, .18) !important;'
+        'box-shadow: inset 3px 0 0 #3B82F6, 0 2px 6px rgba(59, 130, 246, .18) !important;'
         'color: #2563EB !important; font-weight: 700 !important; }}</style>',
         unsafe_allow_html=True,
     )
