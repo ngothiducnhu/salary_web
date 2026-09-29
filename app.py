@@ -516,8 +516,8 @@ with st.sidebar:
     st.markdown(
         '<div class="brand"><div class="brand-bars" aria-hidden="true">'
         '<span></span><span></span><span></span><span></span><span></span></div>'
-        '<div class="brand-title">LƯƠNG NHÂN VIÊN</div></div>',
-        '<div class="brand-sub">Phân tích &amp; Trực quan hóa dữ liệu</div>'
+        '<div class="brand-title">LƯƠNG NHÂN VIÊN</div>',
+        '<div class="brand-sub">Phân tích &amp; Trực quan hóa dữ liệu</div></div>'
         unsafe_allow_html=True,
     )
     for p in pages:
