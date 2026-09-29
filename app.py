@@ -47,8 +47,8 @@ header[data-testid="stHeader"] { background: transparent; }
 
 /* Sidebar theo mẫu: logo cột, menu xanh và bộ lọc xanh xám. */
 section[data-testid="stSidebar"] {
-    background: linear-gradient(160deg, #112246 0%, #0B1B3C 72%, #0B1B3C 100%);
-    border-right: 1px solid #18376C;
+    background: linear-gradient(160deg, #FFFFFF 0%, #F7FAFF 72%, #EEF5FF 100%);
+    border-right: 1px solid #D9E7FA;
     min-width: 258px;
     width: 258px;
 }
@@ -68,54 +68,54 @@ section[data-testid="stSidebar"] [data-testid="stSidebarUserContent"] {
 }
 section[data-testid="stSidebar"] [data-testid="stSidebarCollapseButton"] button,
 section[data-testid="stSidebar"] [data-testid="stSidebarContent"] button[kind="header"] {
-    color: #CBD9F0;
+    color: #5C78A5;
 }
 .brand { display: flex; gap: .7rem; align-items: center; margin: .1rem 0 2rem; }
 .brand-bars { width: 35px; height: 35px; display: flex; align-items: end; gap: 3px; flex: none; }
-.brand-bars span { width: 5px; border-radius: 2px 2px 0 0; background: #E7EFFF;
-                   box-shadow: 0 0 10px #5D9BFF80; }
+.brand-bars span { width: 5px; border-radius: 2px 2px 0 0; background: #4B82F1;
+                   box-shadow: 0 0 10px #5D9BFF55; }
 .brand-bars span:nth-child(1) { height: 14px; }
 .brand-bars span:nth-child(2) { height: 23px; }
 .brand-bars span:nth-child(3) { height: 19px; }
 .brand-bars span:nth-child(4) { height: 30px; }
 .brand-bars span:nth-child(5) { height: 25px; }
-.brand-title { max-width: 180px; font-weight: 600; font-size: 0.95rem; line-height: 1.7; color: #F8FAFF; }
+.brand-title { max-width: 180px; font-weight: 600; font-size: 0.95rem; line-height: 1.7; color: #19315C; }
 section[data-testid="stSidebar"] [data-testid="stPageLink"] { margin-bottom: .18rem; }
 section[data-testid="stSidebar"] [data-testid="stPageLink"] a {
     min-height: 39px; border-radius: 7px; padding: .52rem .7rem;
-    color: #C7D6F1; font-size: .84rem; font-weight: 500;
+    color: #526B96; font-size: .84rem; font-weight: 500;
 }
-section[data-testid="stSidebar"] [data-testid="stPageLink"] a:hover { background: #1D3766; color: #FFFFFF; }
+section[data-testid="stSidebar"] [data-testid="stPageLink"] a:hover { background: #EAF2FF; color: #2868DF; }
 section[data-testid="stSidebar"] [data-testid="stPageLink"] a[aria-current="page"],
 section[data-testid="stSidebar"] [data-testid="stPageLink-NavLink"][aria-current="page"] {
-    background: linear-gradient(90deg, #2374F4, #1D55BD);
-    box-shadow: 0 3px 12px #07153655;
-    color: #FFFFFF; font-weight: 600;
+    background: #EAF2FF;
+    box-shadow: inset 4px 0 0 #3B82F6;
+    color: #3678E8; font-weight: 600;
 }
 section[data-testid="stSidebar"] [data-testid="stPageLink"] a svg { color: currentColor; }
-.side-divider { height: 1px; background: #2B4167; margin: 1.25rem .2rem .9rem; }
+.side-divider { height: 1px; background: #E2EAF5; margin: 1.25rem .2rem .9rem; }
 .side-label { display: flex; align-items: center; gap: .45rem; font-size: .92rem;
-             color: #DFE9FC; margin: 0 0 .65rem; }
+             color: #233D6B; margin: 0 0 .65rem; }
 .side-label svg { opacity: .8; }
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] { margin-bottom: .35rem; }
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] label {
-    color: #D9E5F8; font-size: .78rem; font-weight: 500;
+    color: #526B96; font-size: .78rem; font-weight: 500;
 }
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] [data-baseweb="select"] > div {
-    min-height: 38px; background: #344D76; border: 1px solid #45618D;
+    min-height: 38px; background: #F7FAFF; border: 1px solid #C9D9F0;
     border-radius: 7px; box-shadow: none;
 }
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] [data-baseweb="select"] > div:hover {
-    border-color: #7A9ED6; background: #3A5683;
+    border-color: #78A6F2; background: #FFFFFF;
 }
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] [data-baseweb="select"] * {
-    color: #F2F6FF;
+    color: #233D6B;
 }
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] input::placeholder {
-    color: #D5E0F1; opacity: 1;
+    color: #7A91B5; opacity: 1;
 }
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] [data-baseweb="tag"] {
-    background: #1A5CC4;
+    background: #DDEAFF; color: #2868DF;
 }
 @media (max-width: 700px) {
     section[data-testid="stSidebar"] { width: min(258px, 88vw); min-width: 0; }
