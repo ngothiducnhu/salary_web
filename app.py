@@ -549,12 +549,12 @@ st.session_state["report"] = report
 with st.sidebar:
     st.markdown(
         f'<div class="side-divider"></div><div class="side-label">'
-        f'<span>Bộ lọc dữ liệu</span></div>',
+        f'{svg("filter", "#2563EB", 16)}<span>Bộ lọc dữ liệu</span></div>',
         unsafe_allow_html=True,
     )
-    f_dept = st.multiselect(":material/groups: Phòng ban", sorted(FULL["Department"].unique()), placeholder="Tất cả")
-    f_loc = st.multiselect(":material/location_on: Địa điểm", sorted(FULL["Location"].unique()), placeholder="Tất cả")
-    f_gender = st.multiselect(":material/person: Giới tính", sorted(FULL["Gender"].unique()), placeholder="Tất cả")
+    f_dept = st.multiselect("Phòng ban", sorted(FULL["Department"].unique()), placeholder="Tất cả")
+    f_loc = st.multiselect("Địa điểm", sorted(FULL["Location"].unique()), placeholder="Tất cả")
+    f_gender = st.multiselect("Giới tính", sorted(FULL["Gender"].unique()), placeholder="Tất cả")
 
 DF = FULL
 if f_dept:
