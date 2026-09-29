@@ -104,11 +104,11 @@ section[data-testid="stSidebar"] [data-testid="stSidebarCollapseButton"] button 
 section[data-testid="stSidebar"] [data-testid="stPageLink"] { margin-bottom: .18rem; }
 section[data-testid="stSidebar"] [data-testid="stPageLink"] a {
     min-height: 39px; border-radius: 7px; padding: .52rem .7rem;
-    color: #1B315A !important; font-size: .84rem; font-weight: 600;
+    color: #1B315A !important; font-size: .9rem !important; font-weight: 600;
     opacity: 1 !important;
 }
 section[data-testid="stSidebar"] [data-testid="stPageLink"] a * {
-    color: inherit !important; opacity: 1 !important;
+    color: inherit !important; opacity: 1 !important; font-size: .9rem !important;
 }
 section[data-testid="stSidebar"] [data-testid="stPageLink"] a:hover { background: #EAF2FF; color: #2868DF !important; }
 }
@@ -119,10 +119,10 @@ section[data-testid="stSidebar"] [data-testid="stPageLink"] a svg { color: curre
 .side-label svg { opacity: .8; }
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] { margin-bottom: .35rem; }
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] label {
-    color: #1B315A; font-size: .78rem; font-weight: 500;
+    color: #1B315A; font-size: .9rem !important; font-weight: 500;
 }
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] label * {
-    color: inherit !important;
+    color: inherit !important; font-size: .9rem !important;
 }
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] [data-baseweb="select"] > div {
     min-height: 38px; background: #F7FAFF; border: 1px solid #C9D9F0;
