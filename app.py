@@ -124,7 +124,7 @@ section[data-testid="stSidebar"] [data-testid="stPageLink"] a svg { color: curre
 .side-label svg { opacity: .8; }
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] { margin-bottom: .35rem; }
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] label {
-    color: #2563EB; font-size: .78rem; font-weight: 500;
+    color: #1B315A; font-size: .78rem; font-weight: 500;
 }
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] label * {
     color: inherit !important;
@@ -549,7 +549,7 @@ st.session_state["report"] = report
 with st.sidebar:
     st.markdown(
         f'<div class="side-divider"></div><div class="side-label">'
-        f'{svg("filter", "#4B82F1", 16)}<span>Bộ lọc dữ liệu</span></div>',
+        f'<span>Bộ lọc dữ liệu</span></div>',
         unsafe_allow_html=True,
     )
     f_dept = st.multiselect(":material/groups: Phòng ban", sorted(FULL["Department"].unique()), placeholder="Tất cả")
