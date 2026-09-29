@@ -85,7 +85,9 @@ section[data-testid="stSidebar"] [data-testid="stSidebarCollapseButton"] {
 section[data-testid="stSidebar"] [data-testid="stSidebarCollapseButton"] button {
     transform: translateY(-5px);
 }
-.brand { display: flex; gap: .7rem; align-items: center; margin: .1rem 0 2rem; }
+.brand { display: flex; align-items: center; gap: .85rem; margin: .1rem 0 2rem; }
+.brand-icon { width: 52px; height: 52px; flex: none; display: flex; align-items: center;
+              justify-content: center; background: #EAF2FF; border-radius: 12px; }
 .brand-bars { width: 28px; height: 28px; display: flex; align-items: end; gap: 2px; flex: none; }
 .brand-bars span { width: 4px; border-radius: 2px 2px 0 0; background: #4B82F1;
                    box-shadow: 0 0 10px #5D9BFF55; }
@@ -94,7 +96,11 @@ section[data-testid="stSidebar"] [data-testid="stSidebarCollapseButton"] button 
 .brand-bars span:nth-child(3) { height: 15px; }
 .brand-bars span:nth-child(4) { height: 24px; }
 .brand-bars span:nth-child(5) { height: 20px; }
-.brand-title { max-width: 180px; font-weight: 600; font-size: 0.95rem; line-height: 1.8; color: #19315C; }
+.brand-text { display: flex; flex-direction: column; min-width: 0;
+              padding-left: .85rem; border-left: 1px solid #E2EAF5; }
+.brand-title { font-weight: 700; font-size: 1.05rem; line-height: 1.3; color: #19315C;
+               letter-spacing: .02em; white-space: nowrap; }
+.brand-sub { font-size: .76rem; line-height: 1.4; color: #5C78A5; margin-top: .25rem; }
 section[data-testid="stSidebar"] [data-testid="stPageLink"] { margin-bottom: .18rem; }
 section[data-testid="stSidebar"] [data-testid="stPageLink"] a {
     min-height: 39px; border-radius: 7px; padding: .52rem .7rem;
@@ -514,8 +520,11 @@ current = st.navigation(pages, position="hidden")
 
 with st.sidebar:
     st.markdown(
-        '<div class="brand"><div class="brand-bars" aria-hidden="true">'
-        '<span></span><span></span><span></span><span></span><span></span></div>'
+        '<div class="brand"><div class="brand-icon" aria-hidden="true">'
+        '<div class="brand-bars">'
+        '<span></span><span></span><span></span><span></span><span></span>'
+        '</div></div>'
+        '<div class="brand-text">'
         '<div class="brand-title">LƯƠNG NHÂN VIÊN</div>'
         '<div class="brand-sub">Phân tích &amp; Trực quan hóa dữ liệu</div></div>',
         unsafe_allow_html=True,
