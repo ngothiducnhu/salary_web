@@ -245,7 +245,7 @@ section[data-testid="stSidebar"] [data-baseweb="menu"] [role="option"]:first-chi
 .metric b { font-size: 1.2rem; color: #0F1E3D; font-variant-numeric: tabular-nums; }
 .metric-range b { font-size: clamp(.8rem, 1.15vw, 1.05rem); }
 .prediction-title { font-weight: 600; font-size: 1rem; color: #0F1E3D;
-                    margin: .75rem 0 0; }
+                    margin: 1.5rem 0 0; }
 .prediction-result { min-height: 2.5rem; box-sizing: border-box; padding: .45rem 1rem;
                      display: flex; align-items: center; flex-wrap: wrap;
                      border-radius: 8px; background: #EEF3FF; color: #1E293B;
