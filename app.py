@@ -644,7 +644,7 @@ with st.sidebar:
     with st.container(key="sidebar_nav", gap=None):
         for index, p in enumerate(pages):
             if index:
-                st.space(1)
+                st.space(0)
             with st.container(key=f"nav_{p.url_path}"):
                 st.page_link(p, label=p.title, icon=p.icon)
 
