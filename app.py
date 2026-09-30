@@ -12,7 +12,7 @@ st.set_page_config(
     page_title="Phân tích lương nhân viên",
     page_icon="📊",
     layout="wide",
-    initial_sidebar_state="expanded",
+    initial_sidebar_state="auto",
 )
 
 DATA_PATH = Path(__file__).parent / "data" / "Employers_data.csv"
@@ -45,7 +45,10 @@ html, body, .stApp, .stApp p, .stApp label, .stApp li, .stApp h1, .stApp h2,
 .block-container {
     padding: 0.5rem 3rem 3rem;
     max-width: none;
+    min-width: 0;
 }
+.block-container [data-testid="stVerticalBlock"] { gap: 1.25rem; }
+.block-container [data-testid="stColumn"] { min-width: 0; }
 header[data-testid="stHeader"] { background: transparent; }
 
 /* Sidebar theo mẫu: logo cột, menu xanh và bộ lọc xanh xám. */
@@ -54,10 +57,14 @@ section[data-testid="stSidebar"] {
     border-right: 0;
     min-width: 258px;
     width: 258px;
+    overflow: hidden;
 }
 section[data-testid="stSidebar"] [data-testid="stSidebarContent"] {
     position: relative;
-    min-height: calc(100vh - 1rem);
+    box-sizing: border-box;
+    height: calc(100vh - 1rem);
+    height: calc(100dvh - 1rem);
+    min-height: 0;
     margin: 1rem 0 0 1rem;
     padding: 1.25rem .9rem 1.5rem;
     background: #FFFFFF;
@@ -65,7 +72,7 @@ section[data-testid="stSidebar"] [data-testid="stSidebarContent"] {
     border-bottom: 0;
     border-radius: 15px 15px 0 0;
     box-shadow: 0 8px 26px rgba(65, 101, 153, .08);
-    overflow-x: clip;
+    overflow: hidden;
 }
 section[data-testid="stSidebar"] [data-testid="stSidebarHeader"] {
     position: relative;
@@ -73,8 +80,9 @@ section[data-testid="stSidebar"] [data-testid="stSidebarHeader"] {
 }
 section[data-testid="stSidebar"] [data-testid="stSidebarUserContent"] {
     position: relative;
-    margin-top: -3.5rem;
+    margin-top: -4.75rem;
 }
+section[data-testid="stSidebar"] [data-testid="stVerticalBlock"] { gap: .4rem; }
 section[data-testid="stSidebar"] [data-testid="stSidebarCollapseButton"] button,
 section[data-testid="stSidebar"] [data-testid="stSidebarContent"] button[kind="header"] {
     color: #5C78A5;
@@ -85,7 +93,7 @@ section[data-testid="stSidebar"] [data-testid="stSidebarCollapseButton"] {
 section[data-testid="stSidebar"] [data-testid="stSidebarCollapseButton"] button {
     transform: translateY(-5px);
 }
-.brand { display: flex; align-items: center; gap: .85rem; margin: .1rem 0 2rem; }
+.brand { display: flex; align-items: center; gap: .85rem; margin: .1rem 0 0; }
 .brand-icon { width: 52px; height: 52px; flex: none; display: flex; align-items: center;
               justify-content: center; background: #EAF2FF; border-radius: 12px; }
 .brand-bars { width: 28px; height: 28px; display: flex; align-items: end; gap: 2px; flex: none; }
@@ -98,12 +106,16 @@ section[data-testid="stSidebar"] [data-testid="stSidebarCollapseButton"] button 
 .brand-bars span:nth-child(5) { height: 20px; }
 .brand-text { display: flex; flex-direction: column; min-width: 0;
                             padding-left: 0; }
-.brand-title { font-weight: 700; font-size: calc(1.05rem + 2px); line-height: 1.3; color: #19315C;
-               letter-spacing: .02em; white-space: nowrap; }
+.brand-title { font-weight: 700; font-size: 1.05rem; line-height: 1.25; color: #19315C;
+               letter-spacing: .02em; overflow-wrap: anywhere; }
 .brand-sub { font-size: .76rem; line-height: 1.4; color: #5C78A5; margin-top: .25rem; }
-section[data-testid="stSidebar"] [data-testid="stPageLink"] { margin-bottom: .18rem; }
+section[data-testid="stSidebar"] [data-testid="stPageLink"] { margin-top: .5rem; margin-right: .5rem; }
+section[data-testid="stSidebar"] .st-key-sidebar_nav [data-testid="stVerticalBlock"] {
+    gap: 0 !important;
+}
 section[data-testid="stSidebar"] [data-testid="stPageLink"] a {
-    min-height: 39px; border-radius: 7px; padding: .52rem .7rem;
+    height: 44px; min-height: 44px; box-sizing: border-box;
+    display: flex; align-items: center; border-radius: 7px;
     color: #1B315A !important; font-size: .9rem !important; font-weight: 600;
     opacity: 1 !important;
 }
@@ -111,13 +123,12 @@ section[data-testid="stSidebar"] [data-testid="stPageLink"] a * {
     color: inherit !important; opacity: 1 !important; font-size: .9rem !important;
 }
 section[data-testid="stSidebar"] [data-testid="stPageLink"] a:hover { background: #EAF2FF; color: #2868DF !important; }
-}
 section[data-testid="stSidebar"] [data-testid="stPageLink"] a svg { color: currentColor; }
-.side-divider { height: 1px; background: #E2EAF5; margin: 1.25rem .2rem 2rem; }
+.side-divider { height: 1px; background: #E2EAF5; margin: .35rem .2rem .45rem; }
 .side-label { display: flex; align-items: center; gap: .45rem; font-size: 1rem !important;
-             font-weight: 500; color: #1B315A; margin: 0 0 1.65rem; }
+             font-weight: 500; color: #1B315A; margin: 0 0 .35rem; }
 .side-label svg { opacity: .8; }
-section[data-testid="stSidebar"] [data-testid="stMultiSelect"] { margin-bottom: .35rem; }
+section[data-testid="stSidebar"] [data-testid="stMultiSelect"] { margin-bottom: .5rem; }
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] label {
     color: #1B315A; font-size: .9rem !important; font-weight: 500;
 }
@@ -148,12 +159,32 @@ section[data-testid="stSidebar"] [data-baseweb="menu"] [role="option"]:first-chi
     font-size: .85rem;
     color: #1B315A;
 }
+@media (max-height: 720px) {
+    section[data-testid="stSidebar"] [data-testid="stSidebarContent"] {
+        padding-top: .65rem;
+        padding-bottom: .6rem;
+    }
+    section[data-testid="stSidebar"] [data-testid="stVerticalBlock"] { gap: .3rem; }
+    .side-divider { margin: .25rem .2rem .35rem; }
+    .side-label { margin-bottom: .3rem; }
+}
+@media (max-height: 600px) {
+    .brand-sub { display: none; }
+    section[data-testid="stSidebar"] [data-testid="stPageLink"] a {
+        height: 34px;
+        min-height: 34px;
+    }
+    .side-divider { margin: .2rem .2rem .3rem; }
+    .side-label { margin-bottom: .2rem; }
+}
 @media (max-width: 700px) {
     section[data-testid="stSidebar"] { width: min(258px, 88vw); min-width: 0; }
+    section[data-testid="stSidebar"] [data-testid="stSidebarUserContent"] { margin-top: -3.5rem; }
 }
 
 /* Tiêu đề trang */
-.page-head { display: flex; align-items: center; min-height: 68px; margin-bottom: 1rem; }
+.page-head { display: flex; align-items: center; margin: .25rem 0 0;
+             padding-bottom: .55rem; }
 .page-head h1 { font-size: 1.55rem; line-height: 1.3; font-weight: 500;
                 color: #0F1E3D; margin: 0; padding: 0; }
 .page-head p { color: #64748B; margin: .2rem 0 0; font-size: .88rem; line-height: 1.5; }
@@ -162,22 +193,27 @@ section[data-testid="stSidebar"] [data-baseweb="menu"] [role="option"]:first-chi
     .page-head h1 { font-size: 1.35rem; }
 }
 /* Thẻ KPI */
+.kpi-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 1rem; padding-bottom: .9rem; }
 .kpi { background: #FFFFFF; border: 1px solid #E3E8F0; border-radius: 12px;
-       padding: 1rem 1.1rem; display: flex; gap: .85rem; align-items: center; height: 100%; }
+       padding: 1rem 1.1rem; display: flex; gap: .85rem; align-items: center;
+       min-width: 0; box-sizing: border-box; }
 .kpi-icon { width: 44px; height: 44px; border-radius: 50%; display: grid;
             place-items: center; flex: none; }
+.kpi > div:last-child { min-width: 0; }
 .kpi-label { color: #475569; font-size: .84rem; }
 .kpi-value { color: #0F1E3D; font-size: 1.45rem; font-weight: 700; line-height: 1.3;
-             font-variant-numeric: tabular-nums; }
+             font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
 
 /* Khung chart: st.container(border=True, key="card_...") */
 [class*="st-key-card_"] { background: #FFFFFF; border-radius: 12px;
                           border: 1px solid #E2EAF5 !important;
                           box-shadow: 0 7px 22px rgba(65, 101, 153, .075);
                           overflow: visible; }
+.block-container [class*="st-key-card_"] [data-testid="stVerticalBlock"] { gap: .6rem; }
 .card-title { font-weight: 600; font-size: .95rem; color: #1B315A;
-              margin-bottom: .1rem; white-space: normal; overflow-wrap: anywhere; }
-.card-note { font-size: .8rem; color: #7185A4; margin-bottom: .2rem; }
+              white-space: normal; overflow-wrap: anywhere; }
+.card-note { font-size: .8rem; color: #7185A4; margin-top: .2rem; }
 .chart-heading { display: flex; align-items: flex-start; gap: .5rem;
                  width: 100%; position: relative; z-index: 10; }
 .chart-heading .card-title { flex: 1; min-width: 0; line-height: 1.45; }
@@ -199,14 +235,78 @@ section[data-testid="stSidebar"] [data-baseweb="menu"] [role="option"]:first-chi
 
 /* Chỉ số mô hình */
 .eq { background: #EEF3FF; border-radius: 8px; padding: .6rem .8rem; color: #1E3A8A;
-      font-weight: 600; font-size: .92rem; margin: .3rem 0 .7rem; }
+      font-weight: 600; font-size: .92rem; margin: 0 0 .7rem;
+      overflow-wrap: anywhere; }
+.stats-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: .55rem; }
 .metric-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .55rem; }
-.metric { border: 1px solid #E3E8F0; border-radius: 8px; padding: .55rem .75rem; }
+.metric { border: 1px solid #E3E8F0; border-radius: 8px; padding: .55rem .75rem;
+          min-width: 0; overflow-wrap: anywhere; }
 .metric span { display: block; font-size: .78rem; color: #64748B; }
 .metric b { font-size: 1.2rem; color: #0F1E3D; font-variant-numeric: tabular-nums; }
-.metric-range b { font-size: clamp(.8rem, 1.15vw, 1.05rem); white-space: nowrap; }
-.insight { font-size: .86rem; color: #334155; line-height: 1.55; margin-top: .6rem; }
-.overview-insight { margin-bottom: 1rem; }
+.metric-range b { font-size: clamp(.8rem, 1.15vw, 1.05rem); }
+.prediction-title { font-weight: 600; font-size: 1rem; color: #0F1E3D;
+                    margin: .45rem 0 0; }
+.prediction-result { min-height: 2.5rem; box-sizing: border-box; padding: .45rem 1rem;
+                     display: flex; align-items: center; flex-wrap: wrap;
+                     border-radius: 8px; background: #EEF3FF; color: #1E293B;
+                     font-size: 1rem; overflow-wrap: anywhere; }
+.anova-table { width: 100%; border-collapse: collapse; font-size: .84rem; }
+.anova-table th, .anova-table td { padding: .65rem .5rem; text-align: left;
+                                  border-bottom: 1px solid #E3E8F0; overflow-wrap: anywhere; }
+.anova-table th { background: #F7FAFF; color: #1B315A; font-weight: 600; }
+.anova-table td { color: #334155; }
+.insight { font-size: .86rem; color: #334155; line-height: 1.55; margin-top: .25rem; }
+
+@media (max-width: 1600px) {
+    .stats-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .stats-grid .metric-range { grid-column: span 2; }
+}
+@media (max-width: 1350px) {
+    .kpi-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .st-key-overview_charts [data-testid="stHorizontalBlock"] { flex-wrap: wrap !important; }
+    .st-key-overview_charts [data-testid="stColumn"] {
+        flex: 1 1 calc(50% - .5rem) !important;
+        min-width: min(100%, 300px) !important;
+    }
+}
+@media (max-width: 1100px) {
+    .block-container { padding-right: 1.5rem; padding-left: 1.5rem; }
+    .block-container [data-testid="stHorizontalBlock"] { flex-wrap: wrap !important; }
+    .block-container [data-testid="stHorizontalBlock"] > [data-testid="stColumn"] {
+        flex: 1 1 100% !important;
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+}
+@media (max-width: 900px) {
+    .kpi-grid, .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+    .block-container { padding: .75rem 1rem 2rem; }
+    .block-container [data-testid="stVerticalBlock"] { gap: 1rem; }
+    .block-container [class*="st-key-card_"] [data-testid="stVerticalBlock"] { gap: .5rem; }
+    .page-head { padding-bottom: .4rem; }
+    .kpi-grid { grid-template-columns: 1fr; gap: .65rem; }
+    .kpi { padding: .75rem .9rem; }
+    .kpi-value { font-size: 1.25rem; }
+    .metric-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    [class*="st-key-card_"] { padding: .75rem !important; }
+    .anova-table, .anova-table tbody { display: block; }
+    .anova-table thead { position: absolute; width: 1px; height: 1px;
+                         overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+    .anova-table tr { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+                      gap: .2rem .5rem; padding: .5rem; margin-bottom: .6rem;
+                      border: 1px solid #E3E8F0; border-radius: 8px; }
+    .anova-table td { display: block; border: 0; padding: .25rem; }
+    .anova-table td::before { content: attr(data-label); display: block;
+                              color: #64748B; font-size: .74rem; }
+    .anova-table td:last-child { grid-column: 1 / -1; }
+}
+@media (max-width: 380px) {
+    .stats-grid { grid-template-columns: 1fr; }
+    .stats-grid .metric-range { grid-column: auto; }
+    .metric-grid { grid-template-columns: 1fr; }
+}
 </style>
         """,
         unsafe_allow_html=True,
@@ -300,11 +400,11 @@ def page_overview() -> None:
         ("Lương thấp nhất", vn(k["min"]), "down", "#EA580C", "#FFEBDD"),
         ("Lương cao nhất", vn(k["max"]), "up", "#E11D48", "#FFE4EA"),
     ]
-    for col, c in zip(st.columns(5), cards):
-        col.markdown(kpi_card(*c), unsafe_allow_html=True)
-    st.write("")
+    st.markdown('<div class="kpi-grid">' + ''.join(kpi_card(*c) for c in cards) + '</div>',
+                unsafe_allow_html=True)
 
-    c1, c2, c3 = st.columns([1.35, 1, 1])
+    overview_charts = st.container(key="overview_charts")
+    c1, c2, c3 = overview_charts.columns([1.35, 1, 1])
     with c1, card("1"):
         chart_title("Phân bố mức lương", 1)
         chart(ch.salary_histogram(DF, k["mean"]))
@@ -328,19 +428,20 @@ def page_overview() -> None:
     with card("4"):
         card_title("Thống kê mô tả biến Salary",
                    "Hướng trung tâm, độ phân tán và hình dạng phân phối.")
-        cols = st.columns([1, 1, 1.5, 1, 1, 1, 1])
         items = [
             ("Mode", vn(d["Mode"])), ("Độ lệch chuẩn", vn(d["Std"])),
             ("Q1 / Q3", f'{vn(d["Q1"])} / {vn(d["Q3"])}'), ("IQR", vn(d["IQR"])),
             ("CV", f'{vn(d["CV (%)"], 1)}%'), ("Skewness", vn(d["Skewness"], 3)),
             ("Kurtosis", vn(d["Kurtosis"], 3)),
         ]
-        for col, (label, value) in zip(cols, items):
-            metric_class = "metric metric-range" if label == "Q1 / Q3" else "metric"
-            col.markdown(f'<div class="{metric_class}"><span>{label}</span><b>{value}</b></div>',
-                         unsafe_allow_html=True)
+        stats = ''.join(
+            f'<div class="metric{" metric-range" if label == "Q1 / Q3" else ""}">'
+            f'<span>{label}</span><b>{value}</b></div>'
+            for label, value in items
+        )
+        st.markdown(f'<div class="stats-grid">{stats}</div>', unsafe_allow_html=True)
         st.markdown(
-            f'<div class="insight overview-insight">Trung bình ({vn(d["Mean"])}) '
+            f'<div class="insight">Trung bình ({vn(d["Mean"])}) '
             f'{"thấp hơn" if d["Mean"] < d["Median"] else "cao hơn"} trung vị ({vn(d["Median"])}), '
             f'phân phối {skew_text}. Có {vn(d["Outliers"])} giá trị ngoại lệ theo quy tắc '
             f'Q1 − 1,5·IQR và Q3 + 1,5·IQR.</div>',
@@ -390,8 +491,20 @@ def page_salary() -> None:
             show["Biến"] = show["Biến"].map(lambda c: ch.LABELS.get(c, "Giới tính" if c == "Gender" else c))
             show["F"] = show["F"].map(lambda v: vn(v, 2))
             show["p-value"] = show["p-value"].map(vn_p)
-            st.dataframe(show[["Biến", "F", "p-value", "Kết luận"]],
-                         hide_index=True, width="stretch")
+            headers = ("Biến", "F", "p-value", "Kết luận")
+            rows = ''.join(
+                '<tr>' + ''.join(
+                    f'<td data-label="{escape(col)}">{escape(str(row[col]))}</td>'
+                    for col in headers
+                ) + '</tr>'
+                for _, row in show.iterrows()
+            )
+            st.markdown(
+                '<table class="anova-table"><thead><tr>'
+                + ''.join(f'<th scope="col">{escape(col)}</th>' for col in headers)
+                + f'</tr></thead><tbody>{rows}</tbody></table>',
+                unsafe_allow_html=True,
+            )
             weak = table.loc[table["p-value"] >= 0.05, "Biến"].map(
                 lambda c: ch.LABELS.get(c, "Giới tính" if c == "Gender" else c).lower()).tolist()
             if weak:
@@ -438,9 +551,7 @@ def page_regression() -> None:
             unsafe_allow_html=True,
         )
        
-        INPUT_BG = "#EEF3FF"
-        st.markdown('<div style="font-weight:600; font-size:1rem; color:#0F1E3D; &nbsp;'
-                    'margin:.8rem 0 .4rem;">Dự đoán lương theo số năm kinh nghiệm</div>',
+        st.markdown('<div class="prediction-title">Dự đoán lương theo số năm kinh nghiệm</div>',
                     unsafe_allow_html=True)
 
         with st.container(key="pred_row"):
@@ -452,9 +563,7 @@ def page_regression() -> None:
                 )
             with c_result:
                 st.markdown(
-                    f'<div style="height:2.5rem; box-sizing:border-box; margin:0; padding:0 1rem; '
-                    f'display:flex; align-items:center; border-radius:8px; '
-                    f'background:{INPUT_BG}; color:#1E293B; font-size:1rem; white-space:nowrap;">'
+                    '<div class="prediction-result">'
                     f'Lương dự đoán:&nbsp;<b>{vn(an.predict_salary(reg, years))}</b></div>',
                     unsafe_allow_html=True,
                 )
@@ -524,19 +633,20 @@ with st.sidebar:
         '</div></div>'
         '<div class="brand-text">'
         '<div class="brand-title">LƯƠNG NHÂN VIÊN</div>'
-        '<div class="brand-sub">Phân tích &amp; Trực quan hóa dữ liệu</div></div>',
-        unsafe_allow_html=True,
-    )
-    for p in pages:
-        with st.container(key=f"nav_{p.url_path}"):
-            st.page_link(p, label=p.title, icon=p.icon)
-    st.markdown(
+        '<div class="brand-sub">Phân tích &amp; Trực quan hóa dữ liệu</div></div></div>'
         f'<style>.st-key-nav_{current.url_path} a {{'
         'background: #EAF2FF !important; border-radius: 8px !important;'
         'box-shadow: inset 3px 0 0 #3B82F6, 0 1px 4px rgba(59, 130, 246, .18) !important;'
-        'color: #2563EB !important; font-weight: 700 !important; }}</style>',
+        'color: #2563EB !important; font-weight: 700 !important; }</style>',
         unsafe_allow_html=True,
     )
+    st.space(8)
+    with st.container(key="sidebar_nav", gap=None):
+        for index, p in enumerate(pages):
+            if index:
+                st.space(12)
+            with st.container(key=f"nav_{p.url_path}"):
+                st.page_link(p, label=p.title, icon=p.icon)
 
 try:
     FULL, report = load_data()
