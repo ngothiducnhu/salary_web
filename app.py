@@ -128,7 +128,7 @@ section[data-testid="stSidebar"] [data-testid="stPageLink"] a svg { color: curre
 .side-label { display: flex; align-items: center; gap: .45rem; font-size: 1rem !important;
              font-weight: 500; color: #1B315A; margin: 0 0 .35rem; }
 .side-label svg { opacity: .8; }
-section[data-testid="stSidebar"] [data-testid="stMultiSelect"] { margin-bottom: .5rem; }
+section[data-testid="stSidebar"] [data-testid="stMultiSelect"] { margin-bottom: .7rem; }
 section[data-testid="stSidebar"] [data-testid="stMultiSelect"] label {
     color: #1B315A; font-size: .9rem !important; font-weight: 500;
 }
