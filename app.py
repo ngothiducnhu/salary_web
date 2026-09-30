@@ -644,7 +644,7 @@ with st.sidebar:
     with st.container(key="sidebar_nav", gap=None):
         for index, p in enumerate(pages):
             if index:
-                st.space(4)
+                st.space(2)
             with st.container(key=f"nav_{p.url_path}"):
                 st.page_link(p, label=p.title, icon=p.icon)
 
@@ -665,7 +665,7 @@ with st.sidebar:
         f'{svg("filter", "#1B315A", 16)}<span>Bộ lọc dữ liệu</span></div>',
         unsafe_allow_html=True,
     )
-    st.space(8)
+    st.space(10)
     f_dept = st.multiselect("Phòng ban", sorted(FULL["Department"].unique()), placeholder="Tất cả")
     f_loc = st.multiselect("Địa điểm", sorted(FULL["Location"].unique()), placeholder="Tất cả")
     f_gender = st.multiselect("Giới tính", sorted(FULL["Gender"].unique()), placeholder="Tất cả")
