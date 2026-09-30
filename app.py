@@ -104,6 +104,8 @@ section[data-testid="stSidebar"] [data-testid="stSidebarCollapseButton"] button 
 .brand-bars span:nth-child(3) { height: 15px; }
 .brand-bars span:nth-child(4) { height: 24px; }
 .brand-bars span:nth-child(5) { height: 20px; }
+.brand-link { display: block; color: inherit; text-decoration: none; }
+.brand-link:focus-visible { outline: 2px solid #2563EB; outline-offset: 3px; border-radius: 8px; }
 .brand-text { display: flex; flex-direction: column; min-width: 0;
                             padding-left: 0; }
 .brand-title { font-weight: 700; font-size: 1.05rem; line-height: 1.25; color: #19315C;
@@ -628,13 +630,14 @@ current = st.navigation(pages, position="hidden")
 
 with st.sidebar:
     st.markdown(
+        f'<a class="brand-link" href="/{pages[0].url_path}" aria-label="Về trang Tổng quan">'
         '<div class="brand"><div class="brand-icon" aria-hidden="true">'
         '<div class="brand-bars">'
         '<span></span><span></span><span></span><span></span><span></span>'
         '</div></div>'
         '<div class="brand-text">'
         '<div class="brand-title">LƯƠNG NHÂN VIÊN</div>'
-        '<div class="brand-sub">Phân tích &amp; Trực quan hóa dữ liệu</div></div></div>'
+        '<div class="brand-sub">Phân tích &amp; Trực quan hóa dữ liệu</div></div></div></a>'
         f'<style>.st-key-nav_{current.url_path} a {{'
         'background: #EAF2FF !important; border-radius: 8px !important;'
         'box-shadow: inset 3px 0 0 #3B82F6, 0 1px 4px rgba(59, 130, 246, .18) !important;'
