@@ -124,7 +124,7 @@ section[data-testid="stSidebar"] [data-testid="stPageLink"] a * {
 }
 section[data-testid="stSidebar"] [data-testid="stPageLink"] a:hover { background: #EAF2FF; color: #2868DF !important; }
 section[data-testid="stSidebar"] [data-testid="stPageLink"] a svg { color: currentColor; }
-.side-divider { height: 1px; background: #E2EAF5; margin: .35rem .2rem .45rem; }
+.side-divider { height: 1px; background: #E2EAF5; margin: .55rem .2rem .65rem; }
 .side-label { display: flex; align-items: center; gap: .45rem; font-size: 1rem !important;
              font-weight: 500; color: #1B315A; margin: 0 0 .35rem; }
 .side-label svg { opacity: .8; }
@@ -165,7 +165,7 @@ section[data-testid="stSidebar"] [data-baseweb="menu"] [role="option"]:first-chi
         padding-bottom: .6rem;
     }
     section[data-testid="stSidebar"] [data-testid="stVerticalBlock"] { gap: .3rem; }
-    .side-divider { margin: .25rem .2rem .35rem; }
+    .side-divider { margin: .45rem .2rem .55rem; }
     .side-label { margin-bottom: .3rem; }
 }
 @media (max-height: 600px) {
@@ -174,7 +174,7 @@ section[data-testid="stSidebar"] [data-baseweb="menu"] [role="option"]:first-chi
         height: 34px;
         min-height: 34px;
     }
-    .side-divider { margin: .2rem .2rem .3rem; }
+    .side-divider { margin: .4rem .2rem .5rem; }
     .side-label { margin-bottom: .2rem; }
 }
 @media (max-width: 700px) {
