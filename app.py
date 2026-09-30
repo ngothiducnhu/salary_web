@@ -124,7 +124,7 @@ section[data-testid="stSidebar"] [data-testid="stPageLink"] a * {
 }
 section[data-testid="stSidebar"] [data-testid="stPageLink"] a:hover { background: #EAF2FF; color: #2868DF !important; }
 section[data-testid="stSidebar"] [data-testid="stPageLink"] a svg { color: currentColor; }
-.side-divider { height: 1px; background: #E2EAF5; margin: .55rem .2rem .65rem; }
+.side-divider { height: 1px; background: #E2EAF5; margin: 1rem .2rem .65rem; }
 .side-label { display: flex; align-items: center; gap: .45rem; font-size: 1rem !important;
              font-weight: 500; color: #1B315A; margin: 0 0 .35rem; }
 .side-label svg { opacity: .8; }
