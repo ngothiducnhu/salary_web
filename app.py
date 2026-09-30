@@ -640,7 +640,7 @@ with st.sidebar:
         'color: #2563EB !important; font-weight: 700 !important; }</style>',
         unsafe_allow_html=True,
     )
-    st.space(8)
+    st.space(24)
     with st.container(key="sidebar_nav", gap=None):
         for index, p in enumerate(pages):
             if index:
