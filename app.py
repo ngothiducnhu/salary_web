@@ -168,7 +168,7 @@ section[data-testid="stSidebar"] [data-baseweb="menu"] [role="option"]:first-chi
     .side-divider { margin: .45rem .2rem .9rem; }
     .side-label { margin-bottom: .3rem; }
 }
-@media (max-height: 600px) {
+@media (max-height: 720px) {
     .brand-sub { display: none; }
     section[data-testid="stSidebar"] [data-testid="stPageLink"] a {
         height: 34px;
@@ -256,6 +256,7 @@ section[data-testid="stSidebar"] [data-baseweb="menu"] [role="option"]:first-chi
 .anova-table th { background: #F7FAFF; color: #1B315A; font-weight: 600; }
 .anova-table td { color: #334155; }
 .insight { font-size: .86rem; color: #334155; line-height: 1.55; margin-top: .25rem; }
+.st-key-card_4 .insight { margin-bottom: .75rem; }
 
 @media (max-width: 1600px) {
     .stats-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
