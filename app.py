@@ -245,7 +245,7 @@ section[data-testid="stSidebar"] [data-baseweb="menu"] [role="option"]:first-chi
 .metric b { font-size: 1.2rem; color: #0F1E3D; font-variant-numeric: tabular-nums; }
 .metric-range b { font-size: clamp(.8rem, 1.15vw, 1.05rem); }
 .prediction-title { font-weight: 600; font-size: 1rem; color: #0F1E3D;
-                    margin: .45rem 0 0; }
+                    margin: .75rem 0 0; }
 .prediction-result { min-height: 2.5rem; box-sizing: border-box; padding: .45rem 1rem;
                      display: flex; align-items: center; flex-wrap: wrap;
                      border-radius: 8px; background: #EEF3FF; color: #1E293B;
@@ -256,7 +256,7 @@ section[data-testid="stSidebar"] [data-baseweb="menu"] [role="option"]:first-chi
 .anova-table th { background: #F7FAFF; color: #1B315A; font-weight: 600; }
 .anova-table td { color: #334155; }
 .insight { font-size: .86rem; color: #334155; line-height: 1.55; margin-top: .25rem; }
-.st-key-card_4 .insight { margin-bottom: .75rem; }
+.st-key-card_4 .insight { margin-bottom: .85rem; }
 
 @media (max-width: 1600px) {
     .stats-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
