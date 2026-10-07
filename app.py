@@ -28,9 +28,7 @@ def vn_p(p: float) -> str:
     return "< 0,001" if p < 0.001 else vn(p, 3)
 
 
-# ==========================================================================
 # CSS
-# ==========================================================================
 def inject_css() -> None:
     st.markdown(
         """
@@ -387,9 +385,7 @@ def cached_regression(df: pd.DataFrame, x: str) -> dict:
     return result
 
 
-# ==========================================================================
 # DASHBOARD 1 - TỔNG QUAN
-# ==========================================================================
 def page_overview() -> None:
     page_head("Tổng quan", "Quy mô bộ dữ liệu và phân bố mức lương của nhân viên.")
     k = an.kpis(DF)
@@ -450,9 +446,7 @@ def page_overview() -> None:
         )
 
 
-# ==========================================================================
 # DASHBOARD 2 - PHÂN TÍCH LƯƠNG
-# ==========================================================================
 def page_salary() -> None:
     page_head("Phân tích lương",
               "So sánh mức lương theo phòng ban, chức danh, học vấn và địa điểm.")
@@ -515,9 +509,7 @@ def page_salary() -> None:
                     'chênh lệch nhỏ.</div>', unsafe_allow_html=True)
 
 
-# ==========================================================================
 # DASHBOARD 3 - KINH NGHIỆM VÀ HỒI QUY
-# ==========================================================================
 def page_regression() -> None:
     page_head("Kinh nghiệm & mức lương",
               "Quan hệ giữa kinh nghiệm, độ tuổi và lương; mô hình hồi quy tuyến tính.")
@@ -614,9 +606,7 @@ def page_regression() -> None:
                                             "Salary": "Lương"}))
 
 
-# ==========================================================================
 # SIDEBAR
-# ==========================================================================
 inject_css()
 
 pages = [
@@ -634,7 +624,7 @@ with st.sidebar:
         '</div></div>'
         '<div class="brand-text">'
         '<div class="brand-title">LƯƠNG NHÂN VIÊN</div>'
-        '<div class="brand-sub">Phân tích &amp; Trực quan hóa dữ liệu</div></div></div>'
+        '<div class="brand-sub">Phân tích &amp; Trực quan dữ liệu</div></div></div>'
         f'<style>.st-key-nav_{current.url_path} a {{'
         'background: #EAF2FF !important; border-radius: 8px !important;'
         'box-shadow: inset 3px 0 0 #3B82F6, 0 1px 4px rgba(59, 130, 246, .18) !important;'

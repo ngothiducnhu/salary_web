@@ -1,14 +1,3 @@
-"""
-analysis.py - Xử lý dữ liệu và tính toán thống kê.
-
-Mỗi hàm gắn với một bài trong slide:
-    Bài 1 - Nhập dữ liệu, kiểm tra kiểu dữ liệu, tóm tắt
-    Bài 2 - Tiền xử lý: giá trị khuyết, định dạng, chia nhóm (binning)
-    Bài 5 - Thống kê mô tả, tương quan Pearson, gom nhóm, ANOVA
-    Bài 6 - Hồi quy tuyến tính, MSE, R^2
-    Bài 7 - Train/test split, MAE, RMSE
-"""
-
 import numpy as np
 import pandas as pd
 from scipy import stats
@@ -26,22 +15,18 @@ REQUIRED_COLUMNS = [
 NUMERIC_COLUMNS = ["Age", "Experience_Years", "Salary"]
 CATEGORICAL_COLUMNS = ["Gender", "Department", "Job_Title", "Education_Level", "Location"]
 
-# Các ký hiệu thường dùng cho giá trị khuyết trong dữ liệu thô (Bài 2)
+# Các ký hiệu thường dùng cho giá trị khuyết trong dữ liệu thô
 MISSING_MARKERS = ["?", ".", "", " ", "N/A", "NA", "n/a", "Null", "null", "None", "NaN", "nan"]
 
-# Nhóm kinh nghiệm và nhóm tuổi (Bài 2 - chuyển giá trị số thành giá trị phân loại)
+# Nhóm kinh nghiệm và nhóm tuổi
 EXP_BINS = [-1, 2, 5, 10, 20, 30, np.inf]
 EXP_LABELS = ["0-2", "3-5", "6-10", "11-20", "21-30", "31+"]
 AGE_BINS = [0, 29, 39, 49, np.inf]
 AGE_LABELS = ["Dưới 30", "30-39", "40-49", "50+"]
 
-# Thứ tự hiển thị có ý nghĩa cho biến phân loại có thứ tự
 EDUCATION_ORDER = ["Bachelor", "Master", "PhD"]
 
-
-# --------------------------------------------------------------------------
-# Bài 1 + Bài 2: Nhập và tiền xử lý dữ liệu
-# --------------------------------------------------------------------------
+#Nhập và tiền xử lý dữ liệu
 def validate_columns(df: pd.DataFrame) -> None:
     """Báo lỗi rõ ràng nếu file CSV thiếu cột bắt buộc."""
     missing = [c for c in REQUIRED_COLUMNS if c not in df.columns]
@@ -53,18 +38,7 @@ def validate_columns(df: pd.DataFrame) -> None:
 
 
 def clean_data(raw: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
-    """
-    Tiền xử lý dữ liệu theo Bài 2, trả về (df_sạch, báo_cáo).
-
-    1. Chuyển các ký hiệu khuyết ("?", "N/A", ô trống...) thành NaN
-    2. Định dạng: bỏ khoảng trắng thừa, ép kiểu số bằng pd.to_numeric
-    3. Giá trị khuyết:
-       - Salary (biến mục tiêu) khuyết -> loại bỏ dòng (dropna)
-       - Biến số khác -> thay bằng trung bình (mean)
-       - Biến phân loại -> thay bằng giá trị xuất hiện nhiều nhất (mode)
-    4. Loại dòng trùng lặp
-    5. Tạo nhóm kinh nghiệm, nhóm tuổi bằng pd.cut (binning)
-    """
+  
     validate_columns(raw)
     df = raw.copy()
     report = {"rows_raw": len(df)}
@@ -116,10 +90,7 @@ def dtype_table(df: pd.DataFrame) -> pd.DataFrame:
         "Số giá trị khác nhau": [int(df[c].nunique()) for c in cols],
     })
 
-
-# --------------------------------------------------------------------------
-# Bài 5: Thống kê mô tả
-# --------------------------------------------------------------------------
+#Thống kê mô tả
 def kpis(df: pd.DataFrame) -> dict:
     s = df["Salary"]
     return {
@@ -211,10 +182,7 @@ def correlation_strength(r: float) -> str:
         return "không có tương quan"
     return f"tương quan {'thuận' if r > 0 else 'nghịch'} {level}"
 
-
-# --------------------------------------------------------------------------
-# Bài 6 + Bài 7: Hồi quy tuyến tính và đánh giá mô hình
-# --------------------------------------------------------------------------
+# Hồi quy tuyến tính và đánh giá mô hình
 def fit_regression(df: pd.DataFrame, x: str = "Experience_Years", y: str = "Salary",
                    test_size: float = 0.3, random_state: int = 0) -> dict:
     """

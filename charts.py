@@ -1,20 +1,8 @@
-"""
-charts.py - Các hàm vẽ biểu đồ bằng Plotly.
-
-Loại biểu đồ chọn theo mục đích như Bài 4:
-    Histogram  -> phân phối tần suất
-    Bar        -> so sánh giữa các nhóm
-    Box plot   -> phân bố và giá trị ngoại lệ
-    Scatter    -> mối quan hệ giữa hai biến
-    Residual   -> đánh giá mô hình hồi quy (Bài 6)
-    Heatmap    -> ma trận tương quan (Bài 5)
-"""
-
 import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
 
-# Bảng màu thống nhất trên toàn bộ dashboard
+# Bảng màu trên toàn bộ dashboard
 BLUE = "#2563EB"
 TEAL = "#0FA37F"
 INK = "#1E293B"
@@ -66,9 +54,7 @@ def style(fig: go.Figure, height: int = 330, legend: bool = False) -> go.Figure:
     return fig
 
 
-# --------------------------------------------------------------------------
 # Dashboard 1 - Tổng quan
-# --------------------------------------------------------------------------
 def salary_histogram(df: pd.DataFrame, mean_value: float) -> go.Figure:
     """Biểu đồ 1: phân bố mức lương, kèm đường trung bình."""
     fig = go.Figure(go.Histogram(
@@ -117,9 +103,7 @@ def mean_salary_bar(grouped: pd.DataFrame, col: str) -> go.Figure:
     return style(fig)
 
 
-# --------------------------------------------------------------------------
 # Dashboard 2 - Phân tích lương
-# --------------------------------------------------------------------------
 def mean_median_bar(grouped: pd.DataFrame, col: str, height: int = 320) -> go.Figure:
     """Biểu đồ 4-7: so sánh trung bình và trung vị giữa các nhóm."""
     x = grouped[col].astype(str)
@@ -155,10 +139,7 @@ def _hex_alpha(hex_color: str, alpha: float) -> str:
     r, g, b = int(h[0:2], 16), int(h[2:4], 16), int(h[4:6], 16)
     return f"rgba({r},{g},{b},{alpha})"
 
-
-# --------------------------------------------------------------------------
 # Dashboard 3 - Kinh nghiệm & hồi quy
-# --------------------------------------------------------------------------
 def scatter_with_line(df: pd.DataFrame, x: str, b0: float, b1: float,
                       x_title: str, height: int = 360) -> go.Figure:
     """Biểu đồ 9 và 12: scatter dữ liệu thực tế + đường hồi quy y = b0 + b1x."""

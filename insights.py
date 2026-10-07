@@ -1,8 +1,5 @@
-"""Gợi ý cách đọc từng biểu đồ, tính từ dữ liệu đang được lọc."""
-
 import numpy as np
 import pandas as pd
-
 import analysis as an
 
 
